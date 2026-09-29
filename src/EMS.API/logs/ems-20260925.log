@@ -1,0 +1,481 @@
+2026-09-25 16:10:09.805 +05:30 [WRN] [] Database auto-migration/seeding encountered an issue (PostgreSQL might not be running locally yet).
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|214_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.UnpooledDataSource.Get(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\Program.cs:line 231
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 320
+    Routine: auth_failed
+2026-09-25 16:10:09.903 +05:30 [INF] [] Now listening on: http://localhost:5208
+2026-09-25 16:10:09.918 +05:30 [INF] [] Application started. Press Ctrl+C to shut down.
+2026-09-25 16:10:09.918 +05:30 [INF] [] Hosting environment: Development
+2026-09-25 16:10:09.919 +05:30 [INF] [] Content root path: C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API
+2026-09-25 16:10:20.894 +05:30 [INF] [94e65fd8d8e843059aa5a0160c7c1dee] HTTP GET / responded 404 in 23ms [Trace: 94e65fd8d8e843059aa5a0160c7c1dee]
+2026-09-25 16:11:08.132 +05:30 [WRN] [] Database auto-migration/seeding encountered an issue (PostgreSQL might not be running locally yet).
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|214_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.UnpooledDataSource.Get(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\Program.cs:line 231
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 320
+    Routine: auth_failed
+2026-09-25 16:11:08.327 +05:30 [INF] [] Now listening on: http://localhost:5208
+2026-09-25 16:11:08.354 +05:30 [INF] [] Application started. Press Ctrl+C to shut down.
+2026-09-25 16:11:08.354 +05:30 [INF] [] Hosting environment: Development
+2026-09-25 16:11:08.355 +05:30 [INF] [] Content root path: C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API
+2026-09-25 16:19:59.887 +05:30 [WRN] [] Database auto-migration/seeding encountered an issue (PostgreSQL might not be running locally yet).
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|214_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.UnpooledDataSource.Get(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\Program.cs:line 231
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 320
+    Routine: auth_failed
+2026-09-25 16:20:00.081 +05:30 [INF] [] Now listening on: http://localhost:5208
+2026-09-25 16:20:00.107 +05:30 [INF] [] Application started. Press Ctrl+C to shut down.
+2026-09-25 16:20:00.108 +05:30 [INF] [] Hosting environment: Development
+2026-09-25 16:20:00.108 +05:30 [INF] [] Content root path: C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API
+2026-09-25 16:21:14.476 +05:30 [WRN] [] Database auto-migration/seeding encountered an issue (PostgreSQL might not be running locally yet).
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|214_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.UnpooledDataSource.Get(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\Program.cs:line 231
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 320
+    Routine: auth_failed
+2026-09-25 16:21:14.660 +05:30 [INF] [] Now listening on: http://localhost:5208
+2026-09-25 16:21:14.686 +05:30 [INF] [] Application started. Press Ctrl+C to shut down.
+2026-09-25 16:21:14.689 +05:30 [INF] [] Hosting environment: Development
+2026-09-25 16:21:14.691 +05:30 [INF] [] Content root path: C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API
+2026-09-25 16:23:28.426 +05:30 [WRN] [] Database auto-migration/seeding encountered an issue (PostgreSQL might not be running locally yet).
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|214_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.UnpooledDataSource.Get(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\Program.cs:line 231
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 320
+    Routine: auth_failed
+2026-09-25 16:23:28.518 +05:30 [INF] [] Now listening on: http://localhost:5000
+2026-09-25 16:23:28.519 +05:30 [INF] [] Application started. Press Ctrl+C to shut down.
+2026-09-25 16:23:28.519 +05:30 [INF] [] Hosting environment: Development
+2026-09-25 16:23:28.519 +05:30 [INF] [] Content root path: C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API
+2026-09-25 16:25:42.772 +05:30 [INF] [] Seeding initial EMS data: Roles, Permissions, Admin, Sample Data...
+2026-09-25 16:25:43.032 +05:30 [INF] [] EMS Initial seed completed successfully.
+2026-09-25 16:25:43.098 +05:30 [INF] [] Now listening on: http://localhost:5000
+2026-09-25 16:25:43.098 +05:30 [INF] [] Application started. Press Ctrl+C to shut down.
+2026-09-25 16:25:43.099 +05:30 [INF] [] Hosting environment: Development
+2026-09-25 16:25:43.099 +05:30 [INF] [] Content root path: C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API
+2026-09-25 16:26:05.859 +05:30 [WRN] [403faa8864b04f57a195b4b38cc66537] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-25 16:26:05.944 +05:30 [INF] [403faa8864b04f57a195b4b38cc66537] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-09-25 16:26:05.959 +05:30 [INF] [403faa8864b04f57a195b4b38cc66537] HTTP POST /api/auth/login responded 200 in 201ms [Trace: 403faa8864b04f57a195b4b38cc66537]
+2026-09-25 16:30:32.121 +05:30 [INF] [l04pvnnticl] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-09-25 16:30:32.123 +05:30 [INF] [l04pvnnticl] HTTP POST /api/auth/login responded 200 in 79ms [Trace: l04pvnnticl]
+2026-09-25 16:30:32.224 +05:30 [INF] [lemku5hbc0n] HTTP GET /api/notifications/unread-count responded 200 in 63ms [Trace: lemku5hbc0n]
+2026-09-25 16:30:32.248 +05:30 [INF] [pbsnw9clk2k] HTTP GET /api/notifications/unread-count responded 200 in 10ms [Trace: pbsnw9clk2k]
+2026-09-25 16:30:32.261 +05:30 [INF] [dmsrkscixdj] HTTP GET /api/notifications responded 200 in 22ms [Trace: dmsrkscixdj]
+2026-09-25 16:30:32.265 +05:30 [INF] [18lipyx16vz] HTTP GET /api/employees responded 200 in 91ms [Trace: 18lipyx16vz]
+2026-09-25 16:30:32.275 +05:30 [INF] [fns0o5lzqs9] HTTP GET /api/notifications responded 200 in 2ms [Trace: fns0o5lzqs9]
+2026-09-25 16:30:32.282 +05:30 [INF] [2hea3jtmobw] HTTP GET /api/employees responded 200 in 3ms [Trace: 2hea3jtmobw]
+2026-09-25 16:30:32.308 +05:30 [INF] [d9vklytnvq] HTTP GET /api/departments responded 200 in 27ms [Trace: d9vklytnvq]
+2026-09-25 16:30:32.323 +05:30 [INF] [9qfw6iwsvdj] HTTP GET /api/departments responded 200 in 2ms [Trace: 9qfw6iwsvdj]
+2026-09-25 16:30:32.378 +05:30 [INF] [2jb20fbbga6] HTTP GET /api/leaves responded 200 in 55ms [Trace: 2jb20fbbga6]
+2026-09-25 16:30:32.392 +05:30 [INF] [57er5jnhkd7] HTTP GET /api/leaves responded 200 in 2ms [Trace: 57er5jnhkd7]
+2026-09-25 16:30:32.414 +05:30 [INF] [t1frx32acnk] HTTP GET /api/attendance/today responded 200 in 18ms [Trace: t1frx32acnk]
+2026-09-25 16:30:32.429 +05:30 [INF] [q7pztfbxq7] HTTP GET /api/attendance/today responded 200 in 2ms [Trace: q7pztfbxq7]
+2026-09-25 16:30:40.707 +05:30 [INF] [3uq4it2ons4] HTTP GET /api/departments responded 200 in 3ms [Trace: 3uq4it2ons4]
+2026-09-25 16:30:40.707 +05:30 [INF] [c5fdew3mr99] HTTP GET /api/employees responded 200 in 4ms [Trace: c5fdew3mr99]
+2026-09-25 16:30:40.719 +05:30 [INF] [y7qzn48gtl] HTTP GET /api/departments responded 200 in 1ms [Trace: y7qzn48gtl]
+2026-09-25 16:30:40.719 +05:30 [INF] [q0gm0olc4jn] HTTP GET /api/positions responded 200 in 16ms [Trace: q0gm0olc4jn]
+2026-09-25 16:30:40.727 +05:30 [INF] [t1lafuiirzf] HTTP GET /api/employees responded 200 in 2ms [Trace: t1lafuiirzf]
+2026-09-25 16:30:40.733 +05:30 [INF] [k2urde1tw7e] HTTP GET /api/positions responded 200 in 2ms [Trace: k2urde1tw7e]
+2026-09-25 16:30:44.746 +05:30 [WRN] [ymr6n2wmfek] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-25 16:30:44.775 +05:30 [INF] [ymr6n2wmfek] LOGOUT. User 1
+2026-09-25 16:30:44.775 +05:30 [INF] [ymr6n2wmfek] HTTP POST /api/auth/logout responded 204 in 47ms [Trace: ymr6n2wmfek]
+2026-09-25 16:30:47.596 +05:30 [INF] [d9357kmh6ru] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-09-25 16:30:47.597 +05:30 [INF] [d9357kmh6ru] HTTP POST /api/auth/login responded 200 in 23ms [Trace: d9357kmh6ru]
+2026-09-25 16:30:47.634 +05:30 [INF] [1tgiiu4f26wj] HTTP GET /api/notifications/unread-count responded 200 in 1ms [Trace: 1tgiiu4f26wj]
+2026-09-25 16:30:47.636 +05:30 [INF] [28xrhdjrvdt] HTTP GET /api/departments responded 200 in 3ms [Trace: 28xrhdjrvdt]
+2026-09-25 16:30:47.636 +05:30 [INF] [w6ou50m5ljl] HTTP GET /api/positions responded 200 in 3ms [Trace: w6ou50m5ljl]
+2026-09-25 16:30:47.636 +05:30 [INF] [p6ixru6tcj] HTTP GET /api/employees responded 403 in 3ms [Trace: p6ixru6tcj]
+2026-09-25 16:30:47.647 +05:30 [INF] [w0fxfrwkbc9] HTTP GET /api/employees responded 403 in 0ms [Trace: w0fxfrwkbc9]
+2026-09-25 16:30:47.651 +05:30 [INF] [kmdo9wugk8] HTTP GET /api/notifications/unread-count responded 200 in 1ms [Trace: kmdo9wugk8]
+2026-09-25 16:30:47.651 +05:30 [INF] [320dyoeph3f] HTTP GET /api/departments responded 200 in 1ms [Trace: 320dyoeph3f]
+2026-09-25 16:30:47.652 +05:30 [INF] [rb3xpaa743l] HTTP GET /api/positions responded 200 in 2ms [Trace: rb3xpaa743l]
+2026-09-25 16:30:47.653 +05:30 [INF] [9syutm5n0mw] HTTP GET /api/notifications responded 200 in 2ms [Trace: 9syutm5n0mw]
+2026-09-25 16:30:47.667 +05:30 [INF] [avyxi4izlid] HTTP GET /api/notifications responded 200 in 1ms [Trace: avyxi4izlid]
+2026-09-25 16:30:49.157 +05:30 [INF] [jgw5qafhopd] HTTP GET /api/attendance/today responded 200 in 4ms [Trace: jgw5qafhopd]
+2026-09-25 16:30:49.171 +05:30 [INF] [gpdf30hk8j] HTTP GET /api/attendance/today responded 200 in 1ms [Trace: gpdf30hk8j]
+2026-09-25 16:30:49.754 +05:30 [INF] [1mniuqwy05l] HTTP GET /api/employees responded 403 in 0ms [Trace: 1mniuqwy05l]
+2026-09-25 16:30:49.756 +05:30 [INF] [70tfq3gk1x8] HTTP GET /api/positions responded 200 in 2ms [Trace: 70tfq3gk1x8]
+2026-09-25 16:30:49.756 +05:30 [INF] [f0df4q47rk] HTTP GET /api/departments responded 200 in 2ms [Trace: f0df4q47rk]
+2026-09-25 16:30:49.764 +05:30 [INF] [y4kebgozg9r] HTTP GET /api/employees responded 403 in 0ms [Trace: y4kebgozg9r]
+2026-09-25 16:30:49.765 +05:30 [INF] [i14ls1ja9v] HTTP GET /api/positions responded 200 in 0ms [Trace: i14ls1ja9v]
+2026-09-25 16:30:49.765 +05:30 [INF] [ya07p9hwl4] HTTP GET /api/departments responded 200 in 1ms [Trace: ya07p9hwl4]
+2026-09-25 16:30:51.619 +05:30 [INF] [9tgiokuo5n8] HTTP GET /api/departments responded 200 in 2ms [Trace: 9tgiokuo5n8]
+2026-09-25 16:30:51.632 +05:30 [INF] [ayaz2fauwr5] HTTP GET /api/departments responded 200 in 1ms [Trace: ayaz2fauwr5]
+2026-09-25 16:30:53.454 +05:30 [INF] [d3mxnpjd0o4] HTTP GET /api/positions responded 200 in 1ms [Trace: d3mxnpjd0o4]
+2026-09-25 16:30:53.463 +05:30 [INF] [5xj57lwqw9x] HTTP GET /api/positions responded 200 in 1ms [Trace: 5xj57lwqw9x]
+2026-09-25 16:30:56.220 +05:30 [INF] [04bqhqg0fx6b] HTTP GET /api/attendance/today responded 200 in 2ms [Trace: 04bqhqg0fx6b]
+2026-09-25 16:30:56.233 +05:30 [INF] [shq6us0o2z] HTTP GET /api/attendance/today responded 200 in 1ms [Trace: shq6us0o2z]
+2026-09-25 16:30:56.259 +05:30 [INF] [vp0fgud145] HTTP GET /api/attendance responded 200 in 26ms [Trace: vp0fgud145]
+2026-09-25 16:30:56.273 +05:30 [INF] [rbhsvbon2jo] HTTP GET /api/attendance responded 200 in 1ms [Trace: rbhsvbon2jo]
+2026-09-25 16:30:59.134 +05:30 [INF] [bmd7mp5erqg] HTTP GET /api/leaves/types responded 200 in 14ms [Trace: bmd7mp5erqg]
+2026-09-25 16:30:59.137 +05:30 [INF] [44lplvs30ae] HTTP GET /api/leaves responded 200 in 18ms [Trace: 44lplvs30ae]
+2026-09-25 16:30:59.147 +05:30 [INF] [cto7xyvmco] HTTP GET /api/leaves/types responded 200 in 1ms [Trace: cto7xyvmco]
+2026-09-25 16:30:59.151 +05:30 [INF] [8143pezr69w] HTTP GET /api/leaves responded 200 in 1ms [Trace: 8143pezr69w]
+2026-09-25 16:30:59.951 +05:30 [INF] [9r13srdu7kq] HTTP GET /api/employees responded 403 in 0ms [Trace: 9r13srdu7kq]
+2026-09-25 16:30:59.961 +05:30 [INF] [1jeeffqrdgo] HTTP GET /api/employees responded 403 in 0ms [Trace: 1jeeffqrdgo]
+2026-09-25 16:30:59.982 +05:30 [INF] [sheq3rxwil] HTTP GET /api/projects responded 200 in 31ms [Trace: sheq3rxwil]
+2026-09-25 16:30:59.997 +05:30 [INF] [r30r1b7uphk] HTTP GET /api/projects responded 200 in 1ms [Trace: r30r1b7uphk]
+2026-09-25 16:31:01.654 +05:30 [INF] [cj42f4r2g6f] HTTP GET /api/leaves/types responded 200 in 1ms [Trace: cj42f4r2g6f]
+2026-09-25 16:31:01.654 +05:30 [INF] [e55vpdc4dcs] HTTP GET /api/leaves responded 200 in 2ms [Trace: e55vpdc4dcs]
+2026-09-25 16:31:01.669 +05:30 [INF] [8895i6ayvoj] HTTP GET /api/leaves/types responded 200 in 1ms [Trace: 8895i6ayvoj]
+2026-09-25 16:31:01.669 +05:30 [INF] [pttvamsn5h8] HTTP GET /api/leaves responded 200 in 1ms [Trace: pttvamsn5h8]
+2026-09-25 16:31:15.975 +05:30 [INF] [7jh9o4voxrn] LEAVE_APPLIED. LeaveId: 1, EmployeeId: 4
+2026-09-25 16:31:15.979 +05:30 [INF] [7jh9o4voxrn] HTTP POST /api/leaves responded 201 in 82ms [Trace: 7jh9o4voxrn]
+2026-09-25 16:31:15.997 +05:30 [INF] [246au1yafsu] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: 246au1yafsu]
+2026-09-25 16:31:15.998 +05:30 [INF] [j9h8yzeizyc] HTTP GET /api/leaves responded 200 in 2ms [Trace: j9h8yzeizyc]
+2026-09-25 16:31:17.633 +05:30 [INF] [xirkv814tyh] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: xirkv814tyh]
+2026-09-25 16:31:17.649 +05:30 [INF] [b5xvviy80k] HTTP GET /api/notifications responded 200 in 2ms [Trace: b5xvviy80k]
+2026-09-25 16:31:20.820 +05:30 [INF] [wt6neawwry] HTTP GET /api/notifications responded 200 in 2ms [Trace: wt6neawwry]
+2026-09-25 16:31:20.830 +05:30 [INF] [4v7gj93z7ef] HTTP GET /api/notifications responded 200 in 1ms [Trace: 4v7gj93z7ef]
+2026-09-25 16:31:25.129 +05:30 [INF] [cocthe9npxj] LOGOUT. User 4
+2026-09-25 16:31:25.129 +05:30 [INF] [cocthe9npxj] HTTP POST /api/auth/logout responded 204 in 10ms [Trace: cocthe9npxj]
+2026-09-25 16:31:28.341 +05:30 [INF] [f9wywmjmwvn] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-09-25 16:31:28.341 +05:30 [INF] [f9wywmjmwvn] HTTP POST /api/auth/login responded 200 in 26ms [Trace: f9wywmjmwvn]
+2026-09-25 16:31:28.382 +05:30 [INF] [sgm37w8doc] HTTP GET /api/notifications responded 200 in 1ms [Trace: sgm37w8doc]
+2026-09-25 16:31:28.382 +05:30 [INF] [8jqfy3ipqqq] HTTP GET /api/notifications/unread-count responded 200 in 1ms [Trace: 8jqfy3ipqqq]
+2026-09-25 16:31:28.395 +05:30 [INF] [vumqptx5m9] HTTP GET /api/notifications responded 200 in 0ms [Trace: vumqptx5m9]
+2026-09-25 16:31:28.395 +05:30 [INF] [9rjpdtriqff] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: 9rjpdtriqff]
+2026-09-25 16:31:28.403 +05:30 [INF] [lc6foygtv2m] HTTP GET /api/notifications responded 200 in 0ms [Trace: lc6foygtv2m]
+2026-09-25 16:31:28.410 +05:30 [INF] [kc9jtgkih5] HTTP GET /api/notifications responded 200 in 0ms [Trace: kc9jtgkih5]
+2026-09-25 16:31:30.444 +05:30 [INF] [rl64vadv5z] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: rl64vadv5z]
+2026-09-25 16:31:30.444 +05:30 [INF] [hew7uz3x2mn] HTTP GET /api/leaves responded 200 in 1ms [Trace: hew7uz3x2mn]
+2026-09-25 16:31:30.458 +05:30 [INF] [5i1noa7m5bc] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: 5i1noa7m5bc]
+2026-09-25 16:31:30.458 +05:30 [INF] [sxcf77hh068] HTTP GET /api/leaves responded 200 in 0ms [Trace: sxcf77hh068]
+2026-09-25 16:31:34.189 +05:30 [INF] [50kale8ebxo] HTTP GET /api/employees responded 200 in 3ms [Trace: 50kale8ebxo]
+2026-09-25 16:31:34.209 +05:30 [INF] [idfc2cx1x0k] HTTP GET /api/employees responded 200 in 1ms [Trace: idfc2cx1x0k]
+2026-09-25 16:31:34.212 +05:30 [INF] [z8jsv5jkcy] HTTP GET /api/employees/1/salary responded 200 in 24ms [Trace: z8jsv5jkcy]
+2026-09-25 16:31:34.225 +05:30 [INF] [hact0n7hv39] HTTP GET /api/employees/1/salary responded 200 in 1ms [Trace: hact0n7hv39]
+2026-09-25 16:31:35.675 +05:30 [INF] [p5u3liyivdo] HTTP GET /api/employees/1/payslips responded 200 in 25ms [Trace: p5u3liyivdo]
+2026-09-25 16:31:35.689 +05:30 [INF] [i60cl2ehuv] HTTP GET /api/employees/1/payslips responded 200 in 1ms [Trace: i60cl2ehuv]
+2026-09-25 16:31:37.939 +05:30 [INF] [l2q778lwkpk] HTTP GET /api/auth/users responded 200 in 25ms [Trace: l2q778lwkpk]
+2026-09-25 16:31:37.954 +05:30 [INF] [c7g54qgefvs] HTTP GET /api/auth/users responded 200 in 1ms [Trace: c7g54qgefvs]
+2026-09-25 16:31:54.038 +05:30 [INF] [99aal23c4go] HTTP GET /api/auth/roles responded 200 in 33ms [Trace: 99aal23c4go]
+2026-09-25 16:31:54.055 +05:30 [INF] [dfn96icd48j] HTTP GET /api/auth/roles responded 200 in 1ms [Trace: dfn96icd48j]
+2026-09-25 16:31:58.401 +05:30 [INF] [b9r01rga9b] HTTP GET /api/notifications/unread-count responded 200 in 2ms [Trace: b9r01rga9b]
+2026-09-25 16:31:58.417 +05:30 [INF] [bw6cwxkw5p] HTTP GET /api/notifications responded 200 in 1ms [Trace: bw6cwxkw5p]
+2026-09-25 16:32:03.239 +05:30 [INF] [rlgr1pj0fla] HTTP GET /api/audit-logs responded 200 in 28ms [Trace: rlgr1pj0fla]
+2026-09-25 16:32:03.254 +05:30 [INF] [hh91lo4ujga] HTTP GET /api/audit-logs responded 200 in 1ms [Trace: hh91lo4ujga]
+2026-09-25 16:32:05.929 +05:30 [INF] [y6nvg00b8tg] HTTP GET /api/reports/employees-by-department responded 200 in 7ms [Trace: y6nvg00b8tg]
+2026-09-25 16:32:05.930 +05:30 [INF] [zit4ig2c6na] HTTP GET /api/reports/project-allocation responded 200 in 7ms [Trace: zit4ig2c6na]
+2026-09-25 16:32:05.930 +05:30 [INF] [hbnuk1odpy9] HTTP GET /api/reports/leave-utilization responded 200 in 9ms [Trace: hbnuk1odpy9]
+2026-09-25 16:32:05.939 +05:30 [INF] [vnrziir6f3a] HTTP GET /api/reports/payroll-summary responded 200 in 16ms [Trace: vnrziir6f3a]
+2026-09-25 16:32:05.945 +05:30 [INF] [rm8zof4pavq] HTTP GET /api/reports/employees-by-department responded 200 in 1ms [Trace: rm8zof4pavq]
+2026-09-25 16:32:05.945 +05:30 [INF] [khrvg5iv8c] HTTP GET /api/reports/project-allocation responded 200 in 1ms [Trace: khrvg5iv8c]
+2026-09-25 16:32:05.945 +05:30 [INF] [z6omyn3tdep] HTTP GET /api/reports/leave-utilization responded 200 in 1ms [Trace: z6omyn3tdep]
+2026-09-25 16:32:05.951 +05:30 [INF] [cqmivmn2wu] HTTP GET /api/reports/payroll-summary responded 200 in 1ms [Trace: cqmivmn2wu]
+2026-09-25 16:32:09.644 +05:30 [INF] [phryocrs7mi] HTTP GET /api/employees responded 200 in 1ms [Trace: phryocrs7mi]
+2026-09-25 16:32:09.662 +05:30 [INF] [o7o8n57p02r] HTTP GET /api/employees responded 200 in 1ms [Trace: o7o8n57p02r]
+2026-09-25 16:32:09.662 +05:30 [INF] [no4qchsqx6] HTTP GET /api/departments responded 200 in 0ms [Trace: no4qchsqx6]
+2026-09-25 16:32:09.675 +05:30 [INF] [ga9egxpj24] HTTP GET /api/departments responded 200 in 0ms [Trace: ga9egxpj24]
+2026-09-25 16:32:09.677 +05:30 [INF] [zcepyxp8r4g] HTTP GET /api/leaves responded 200 in 1ms [Trace: zcepyxp8r4g]
+2026-09-25 16:32:09.688 +05:30 [INF] [mxq6gu1a84p] HTTP GET /api/attendance/today responded 200 in 1ms [Trace: mxq6gu1a84p]
+2026-09-25 16:32:09.688 +05:30 [INF] [x5r6ts97c5i] HTTP GET /api/leaves responded 200 in 1ms [Trace: x5r6ts97c5i]
+2026-09-25 16:32:09.701 +05:30 [INF] [vdqxfqbzb4r] HTTP GET /api/attendance/today responded 200 in 0ms [Trace: vdqxfqbzb4r]
+2026-09-25 16:32:12.769 +05:30 [INF] [wssrdx9gyk] HTTP GET /api/attendance/today responded 200 in 1ms [Trace: wssrdx9gyk]
+2026-09-25 16:32:12.784 +05:30 [INF] [xrzyb8sqoa] HTTP GET /api/attendance/today responded 200 in 1ms [Trace: xrzyb8sqoa]
+2026-09-25 16:32:12.785 +05:30 [INF] [vny4igg5xj] HTTP GET /api/attendance responded 200 in 1ms [Trace: vny4igg5xj]
+2026-09-25 16:32:12.798 +05:30 [INF] [65k77hkqwa8] HTTP GET /api/attendance responded 200 in 1ms [Trace: 65k77hkqwa8]
+2026-09-25 16:32:16.790 +05:30 [INF] [9uyt1j6u42] HTTP GET /api/employees responded 200 in 2ms [Trace: 9uyt1j6u42]
+2026-09-25 16:32:16.805 +05:30 [INF] [lru1t4icy9] HTTP GET /api/departments responded 200 in 1ms [Trace: lru1t4icy9]
+2026-09-25 16:32:16.806 +05:30 [INF] [x764bnod7ql] HTTP GET /api/employees responded 200 in 1ms [Trace: x764bnod7ql]
+2026-09-25 16:32:16.816 +05:30 [INF] [gxnle6hfxjp] HTTP GET /api/leaves responded 200 in 1ms [Trace: gxnle6hfxjp]
+2026-09-25 16:32:16.816 +05:30 [INF] [cvyqvmotph] HTTP GET /api/departments responded 200 in 1ms [Trace: cvyqvmotph]
+2026-09-25 16:32:16.826 +05:30 [INF] [f38ll3lwl6j] HTTP GET /api/attendance/today responded 200 in 0ms [Trace: f38ll3lwl6j]
+2026-09-25 16:32:16.826 +05:30 [INF] [oay1vk0bzt] HTTP GET /api/leaves responded 200 in 1ms [Trace: oay1vk0bzt]
+2026-09-25 16:32:16.835 +05:30 [INF] [yj51zypg50m] HTTP GET /api/attendance/today responded 200 in 0ms [Trace: yj51zypg50m]
+2026-09-25 16:32:19.499 +05:30 [INF] [r0o6uv1oekr] HTTP GET /api/employees/1/payslips responded 200 in 1ms [Trace: r0o6uv1oekr]
+2026-09-25 16:32:19.510 +05:30 [INF] [zwekbon93hi] HTTP GET /api/employees/1/payslips responded 200 in 1ms [Trace: zwekbon93hi]
+2026-09-25 16:32:21.397 +05:30 [INF] [2b562bl4x5v] HTTP GET /api/employees/1/salary responded 200 in 1ms [Trace: 2b562bl4x5v]
+2026-09-25 16:32:21.398 +05:30 [INF] [7ysptbsiuxf] HTTP GET /api/employees responded 200 in 2ms [Trace: 7ysptbsiuxf]
+2026-09-25 16:32:21.409 +05:30 [INF] [vmz4o13jxi] HTTP GET /api/employees responded 200 in 2ms [Trace: vmz4o13jxi]
+2026-09-25 16:32:21.411 +05:30 [INF] [epgjwxcradk] HTTP GET /api/employees/1/salary responded 200 in 1ms [Trace: epgjwxcradk]
+2026-09-25 16:32:25.219 +05:30 [INF] [jzykhqfmagd] HTTP GET /api/employees/2/salary responded 200 in 1ms [Trace: jzykhqfmagd]
+2026-09-25 16:32:25.761 +05:30 [INF] [81u3f3voi66] HTTP GET /api/employees/3/salary responded 200 in 2ms [Trace: 81u3f3voi66]
+2026-09-25 16:32:27.801 +05:30 [INF] [766gc09rona] LOGOUT. User 1
+2026-09-25 16:32:27.801 +05:30 [INF] [766gc09rona] HTTP POST /api/auth/logout responded 204 in 10ms [Trace: 766gc09rona]
+2026-09-25 16:32:31.343 +05:30 [INF] [nqc9bbhryx] LOGIN_SUCCESS. User manager@company.com, EmployeeId: 3
+2026-09-25 16:32:31.343 +05:30 [INF] [nqc9bbhryx] HTTP POST /api/auth/login responded 200 in 23ms [Trace: nqc9bbhryx]
+2026-09-25 16:32:31.372 +05:30 [INF] [bm9a2y7acg4] HTTP GET /api/employees responded 403 in 0ms [Trace: bm9a2y7acg4]
+2026-09-25 16:32:31.373 +05:30 [INF] [gm55an047zs] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: gm55an047zs]
+2026-09-25 16:32:31.373 +05:30 [INF] [b28mrbp2rvm] HTTP GET /api/employees/1/salary responded 403 in 1ms [Trace: b28mrbp2rvm]
+2026-09-25 16:32:31.384 +05:30 [INF] [bqnbx29jad7] HTTP GET /api/employees responded 403 in 0ms [Trace: bqnbx29jad7]
+2026-09-25 16:32:31.384 +05:30 [INF] [yqhed4st9a9] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: yqhed4st9a9]
+2026-09-25 16:32:31.384 +05:30 [INF] [ppn8e9u2p08] HTTP GET /api/employees/1/salary responded 403 in 1ms [Trace: ppn8e9u2p08]
+2026-09-25 16:32:31.386 +05:30 [INF] [hjhexitzlhf] HTTP GET /api/notifications responded 200 in 0ms [Trace: hjhexitzlhf]
+2026-09-25 16:32:31.401 +05:30 [INF] [2nyf3ugyny8] HTTP GET /api/notifications responded 200 in 0ms [Trace: 2nyf3ugyny8]
+2026-09-25 16:32:37.286 +05:30 [INF] [mdp2xyzyfj] HTTP GET /api/departments responded 200 in 1ms [Trace: mdp2xyzyfj]
+2026-09-25 16:32:37.304 +05:30 [INF] [6kd0plzwy6] HTTP GET /api/departments responded 200 in 1ms [Trace: 6kd0plzwy6]
+2026-09-25 16:32:38.139 +05:30 [INF] [b38ff7fnh2t] HTTP GET /api/employees responded 403 in 0ms [Trace: b38ff7fnh2t]
+2026-09-25 16:32:38.140 +05:30 [INF] [61mdq1mbzo9] HTTP GET /api/positions responded 200 in 1ms [Trace: 61mdq1mbzo9]
+2026-09-25 16:32:38.140 +05:30 [INF] [j0y8249edyq] HTTP GET /api/departments responded 200 in 1ms [Trace: j0y8249edyq]
+2026-09-25 16:32:38.148 +05:30 [INF] [5nxp2g5hsxi] HTTP GET /api/departments responded 200 in 1ms [Trace: 5nxp2g5hsxi]
+2026-09-25 16:32:38.152 +05:30 [INF] [rvtv9qoiedl] HTTP GET /api/employees responded 403 in 0ms [Trace: rvtv9qoiedl]
+2026-09-25 16:32:38.164 +05:30 [INF] [3p236gvky43] HTTP GET /api/positions responded 200 in 11ms [Trace: 3p236gvky43]
+2026-09-25 16:32:39.139 +05:30 [INF] [v6zhb4taebt] HTTP GET /api/employees responded 403 in 0ms [Trace: v6zhb4taebt]
+2026-09-25 16:32:39.152 +05:30 [INF] [q1xotqt8rwp] HTTP GET /api/employees responded 403 in 0ms [Trace: q1xotqt8rwp]
+2026-09-25 16:32:44.259 +05:30 [INF] [t6aen5vclvq] CHECK_IN. EmployeeId: 3, Status: "Late"
+2026-09-25 16:32:44.260 +05:30 [INF] [t6aen5vclvq] HTTP POST /api/attendance/check-in responded 200 in 21ms [Trace: t6aen5vclvq]
+2026-09-25 16:32:49.006 +05:30 [INF] [btdhnvlzlp7] HTTP GET /api/employees responded 403 in 0ms [Trace: btdhnvlzlp7]
+2026-09-25 16:32:49.007 +05:30 [INF] [0la68bhsq6xr] HTTP GET /api/positions responded 200 in 1ms [Trace: 0la68bhsq6xr]
+2026-09-25 16:32:49.007 +05:30 [INF] [5kb0vy8bs24] HTTP GET /api/departments responded 200 in 1ms [Trace: 5kb0vy8bs24]
+2026-09-25 16:32:49.017 +05:30 [INF] [6tccdk33z3a] HTTP GET /api/positions responded 200 in 0ms [Trace: 6tccdk33z3a]
+2026-09-25 16:32:49.020 +05:30 [INF] [gpp9qhznbqg] HTTP GET /api/employees responded 403 in 0ms [Trace: gpp9qhznbqg]
+2026-09-25 16:32:49.020 +05:30 [INF] [x6rqow9d9z] HTTP GET /api/departments responded 200 in 0ms [Trace: x6rqow9d9z]
+2026-09-25 16:32:50.640 +05:30 [INF] [vu3bgf5vw1] HTTP GET /api/departments responded 200 in 0ms [Trace: vu3bgf5vw1]
+2026-09-25 16:32:50.652 +05:30 [INF] [bw26d8q93lw] HTTP GET /api/departments responded 200 in 1ms [Trace: bw26d8q93lw]
+2026-09-25 16:32:54.955 +05:30 [INF] [8wqa1k2g81j] HTTP GET /api/positions responded 200 in 1ms [Trace: 8wqa1k2g81j]
+2026-09-25 16:32:54.963 +05:30 [INF] [t93t9r64z5l] HTTP GET /api/positions responded 200 in 1ms [Trace: t93t9r64z5l]
+2026-09-25 16:32:58.137 +05:30 [INF] [7n0cum9fphj] HTTP GET /api/attendance/today responded 200 in 0ms [Trace: 7n0cum9fphj]
+2026-09-25 16:32:58.151 +05:30 [INF] [6xbcksnnyel] HTTP GET /api/attendance responded 200 in 0ms [Trace: 6xbcksnnyel]
+2026-09-25 16:32:58.151 +05:30 [INF] [84jd48clgph] HTTP GET /api/attendance/today responded 200 in 1ms [Trace: 84jd48clgph]
+2026-09-25 16:32:58.164 +05:30 [INF] [fr3lw7eb89] HTTP GET /api/attendance responded 200 in 1ms [Trace: fr3lw7eb89]
+2026-09-25 16:33:01.381 +05:30 [INF] [ign9toelr2k] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: ign9toelr2k]
+2026-09-25 16:33:01.399 +05:30 [INF] [bi8trngfej7] HTTP GET /api/notifications responded 200 in 1ms [Trace: bi8trngfej7]
+2026-09-25 16:33:31.386 +05:30 [INF] [7v7rwbri2p9] HTTP GET /api/notifications/unread-count responded 200 in 2ms [Trace: 7v7rwbri2p9]
+2026-09-25 16:33:31.406 +05:30 [INF] [6udyvxnfzg8] HTTP GET /api/notifications responded 200 in 1ms [Trace: 6udyvxnfzg8]
+2026-09-25 16:33:32.357 +05:30 [INF] [jdnvu83zs1] LOGOUT. User 3
+2026-09-25 16:33:32.357 +05:30 [INF] [jdnvu83zs1] HTTP POST /api/auth/logout responded 204 in 4ms [Trace: jdnvu83zs1]
+2026-09-25 16:33:35.559 +05:30 [INF] [bnz86grnw5g] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-09-25 16:33:35.560 +05:30 [INF] [bnz86grnw5g] HTTP POST /api/auth/login responded 200 in 29ms [Trace: bnz86grnw5g]
+2026-09-25 16:33:35.589 +05:30 [INF] [emllp1pxaj8] HTTP GET /api/attendance/today responded 200 in 0ms [Trace: emllp1pxaj8]
+2026-09-25 16:33:35.589 +05:30 [INF] [xuly23kl1sg] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: xuly23kl1sg]
+2026-09-25 16:33:35.602 +05:30 [INF] [d8sf3ikd94] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: d8sf3ikd94]
+2026-09-25 16:33:35.602 +05:30 [INF] [s3otxl37vm] HTTP GET /api/attendance/today responded 200 in 0ms [Trace: s3otxl37vm]
+2026-09-25 16:33:35.603 +05:30 [INF] [9hj37u9hhck] HTTP GET /api/notifications responded 200 in 0ms [Trace: 9hj37u9hhck]
+2026-09-25 16:33:35.604 +05:30 [INF] [k8q4m8f3ad] HTTP GET /api/attendance responded 200 in 0ms [Trace: k8q4m8f3ad]
+2026-09-25 16:33:35.614 +05:30 [INF] [7fy4rgpbb5k] HTTP GET /api/notifications responded 200 in 0ms [Trace: 7fy4rgpbb5k]
+2026-09-25 16:33:35.616 +05:30 [INF] [45fhf5lx9k7] HTTP GET /api/attendance responded 200 in 0ms [Trace: 45fhf5lx9k7]
+2026-09-25 16:33:38.170 +05:30 [INF] [99y64qf0og] HTTP GET /api/leaves/types responded 200 in 1ms [Trace: 99y64qf0og]
+2026-09-25 16:33:38.171 +05:30 [INF] [8h47vzxkqqm] HTTP GET /api/leaves responded 200 in 1ms [Trace: 8h47vzxkqqm]
+2026-09-25 16:33:38.185 +05:30 [INF] [kkxsqf80o39] HTTP GET /api/leaves responded 200 in 1ms [Trace: kkxsqf80o39]
+2026-09-25 16:33:38.186 +05:30 [INF] [98hiyyhx5br] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: 98hiyyhx5br]
+2026-09-25 16:33:47.944 +05:30 [INF] [mtvvjsd833p] LOGOUT. User 4
+2026-09-25 16:33:47.944 +05:30 [INF] [mtvvjsd833p] HTTP POST /api/auth/logout responded 204 in 9ms [Trace: mtvvjsd833p]
+2026-09-25 16:33:50.113 +05:30 [INF] [z65w69xeus] LOGIN_SUCCESS. User manager@company.com, EmployeeId: 3
+2026-09-25 16:33:50.113 +05:30 [INF] [z65w69xeus] HTTP POST /api/auth/login responded 200 in 27ms [Trace: z65w69xeus]
+2026-09-25 16:33:50.144 +05:30 [INF] [7436vekr8ai] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: 7436vekr8ai]
+2026-09-25 16:33:50.144 +05:30 [INF] [xvneg20w8m8] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: xvneg20w8m8]
+2026-09-25 16:33:50.144 +05:30 [INF] [015zk0skn790n] HTTP GET /api/leaves responded 200 in 0ms [Trace: 015zk0skn790n]
+2026-09-25 16:33:50.156 +05:30 [INF] [qrjrehus5yo] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: qrjrehus5yo]
+2026-09-25 16:33:50.157 +05:30 [INF] [suwsochcj1d] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: suwsochcj1d]
+2026-09-25 16:33:50.157 +05:30 [INF] [g5ix4mbj2oc] HTTP GET /api/leaves responded 200 in 0ms [Trace: g5ix4mbj2oc]
+2026-09-25 16:33:50.158 +05:30 [INF] [ej5xroko57d] HTTP GET /api/notifications responded 200 in 0ms [Trace: ej5xroko57d]
+2026-09-25 16:33:50.169 +05:30 [INF] [zjsjp4dvrr] HTTP GET /api/notifications responded 200 in 0ms [Trace: zjsjp4dvrr]
+2026-09-25 16:33:51.886 +05:30 [INF] [b4q4cc3px9t] HTTP PUT /api/leaves/1/approve responded 403 in 2ms [Trace: b4q4cc3px9t]
+2026-09-25 16:33:54.387 +05:30 [INF] [ddfkc56jtm8] HTTP PUT /api/leaves/1/reject responded 403 in 1ms [Trace: ddfkc56jtm8]
+2026-09-25 16:33:58.769 +05:30 [INF] [3wtppdxw8yi] LEAVE_APPLIED. LeaveId: 2, EmployeeId: 3
+2026-09-25 16:33:58.769 +05:30 [INF] [3wtppdxw8yi] HTTP POST /api/leaves responded 201 in 10ms [Trace: 3wtppdxw8yi]
+2026-09-25 16:33:58.792 +05:30 [INF] [ywr29z8kpgn] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: ywr29z8kpgn]
+2026-09-25 16:33:58.792 +05:30 [INF] [slykdfrjnp] HTTP GET /api/leaves responded 200 in 0ms [Trace: slykdfrjnp]
+2026-09-25 16:34:01.506 +05:30 [INF] [x2n72hfwo5] HTTP PUT /api/leaves/1/approve responded 403 in 2ms [Trace: x2n72hfwo5]
+2026-09-25 16:34:04.522 +05:30 [INF] [r3i1tigng] LOGOUT. User 3
+2026-09-25 16:34:04.522 +05:30 [INF] [r3i1tigng] HTTP POST /api/auth/logout responded 204 in 9ms [Trace: r3i1tigng]
+2026-09-25 16:34:08.750 +05:30 [INF] [z00n1bqx4sf] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-09-25 16:34:08.750 +05:30 [INF] [z00n1bqx4sf] HTTP POST /api/auth/login responded 200 in 21ms [Trace: z00n1bqx4sf]
+2026-09-25 16:34:08.783 +05:30 [INF] [toebho0qsw] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: toebho0qsw]
+2026-09-25 16:34:08.783 +05:30 [INF] [e3uvg18hwt] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: e3uvg18hwt]
+2026-09-25 16:34:08.783 +05:30 [INF] [3gngwrj1qv1] HTTP GET /api/leaves responded 200 in 0ms [Trace: 3gngwrj1qv1]
+2026-09-25 16:34:08.793 +05:30 [INF] [yvzzm1ow8zn] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: yvzzm1ow8zn]
+2026-09-25 16:34:08.794 +05:30 [INF] [xtncfrka86o] HTTP GET /api/leaves responded 200 in 0ms [Trace: xtncfrka86o]
+2026-09-25 16:34:08.794 +05:30 [INF] [2hmf9gd3f1] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: 2hmf9gd3f1]
+2026-09-25 16:34:08.795 +05:30 [INF] [oc5v5fuhf3f] HTTP GET /api/notifications responded 200 in 0ms [Trace: oc5v5fuhf3f]
+2026-09-25 16:34:08.806 +05:30 [INF] [47aq5wg57jq] HTTP GET /api/notifications responded 200 in 0ms [Trace: 47aq5wg57jq]
+2026-09-25 16:34:39.733 +05:30 [INF] [5f2viw2gqo] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: 5f2viw2gqo]
+2026-09-25 16:34:39.749 +05:30 [INF] [9nccgs2yj3h] HTTP GET /api/notifications responded 200 in 2ms [Trace: 9nccgs2yj3h]
+2026-09-25 16:35:05.516 +05:30 [INF] [skzzku9funq] LEAVE_STATUS_CHANGED. LeaveId: 1, Status: "Rejected", By: 1
+2026-09-25 16:35:05.516 +05:30 [INF] [skzzku9funq] HTTP PUT /api/leaves/1/reject responded 200 in 51ms [Trace: skzzku9funq]
+2026-09-25 16:35:05.539 +05:30 [INF] [5jewsi5sckk] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: 5jewsi5sckk]
+2026-09-25 16:35:05.540 +05:30 [INF] [92973emsw2j] HTTP GET /api/leaves responded 200 in 1ms [Trace: 92973emsw2j]
+2026-09-25 16:35:08.789 +05:30 [INF] [wx3rouucypq] HTTP GET /api/notifications/unread-count responded 200 in 2ms [Trace: wx3rouucypq]
+2026-09-25 16:35:08.812 +05:30 [INF] [a24uzoha1mv] HTTP GET /api/notifications responded 200 in 1ms [Trace: a24uzoha1mv]
+2026-09-25 16:35:09.022 +05:30 [INF] [c9htomfwdqg] LEAVE_STATUS_CHANGED. LeaveId: 2, Status: "Approved", By: 1
+2026-09-25 16:35:09.022 +05:30 [INF] [c9htomfwdqg] HTTP PUT /api/leaves/2/approve responded 200 in 13ms [Trace: c9htomfwdqg]
+2026-09-25 16:35:09.044 +05:30 [INF] [olge2xm7xs] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: olge2xm7xs]
+2026-09-25 16:35:09.044 +05:30 [INF] [tzb3kmwwcb] HTTP GET /api/leaves responded 200 in 0ms [Trace: tzb3kmwwcb]
+2026-09-25 16:35:14.291 +05:30 [INF] [fwrp4qmopjl] LOGOUT. User 1
+2026-09-25 16:35:14.291 +05:30 [INF] [fwrp4qmopjl] HTTP POST /api/auth/logout responded 204 in 10ms [Trace: fwrp4qmopjl]
+2026-09-25 16:35:16.712 +05:30 [INF] [9gvv3aiv9za] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-09-25 16:35:16.712 +05:30 [INF] [9gvv3aiv9za] HTTP POST /api/auth/login responded 200 in 22ms [Trace: 9gvv3aiv9za]
+2026-09-25 16:35:16.745 +05:30 [INF] [b2ow98yx85k] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: b2ow98yx85k]
+2026-09-25 16:35:16.745 +05:30 [INF] [nnlhr4m5z69] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: nnlhr4m5z69]
+2026-09-25 16:35:16.746 +05:30 [INF] [uik1vlsyhdi] HTTP GET /api/leaves responded 200 in 1ms [Trace: uik1vlsyhdi]
+2026-09-25 16:35:16.758 +05:30 [INF] [rrijn1yeqpo] HTTP GET /api/leaves responded 200 in 1ms [Trace: rrijn1yeqpo]
+2026-09-25 16:35:16.759 +05:30 [INF] [v3wnaf5qpzf] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: v3wnaf5qpzf]
+2026-09-25 16:35:16.760 +05:30 [INF] [7hteuk9ng42] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: 7hteuk9ng42]
+2026-09-25 16:35:16.760 +05:30 [INF] [su2bztxu3tc] HTTP GET /api/notifications responded 200 in 0ms [Trace: su2bztxu3tc]
+2026-09-25 16:35:16.774 +05:30 [INF] [cb5v9dbci7o] HTTP GET /api/notifications responded 200 in 0ms [Trace: cb5v9dbci7o]
+2026-09-25 16:35:42.814 +05:30 [INF] [3fnpuq1o5wa] LEAVE_APPLIED. LeaveId: 3, EmployeeId: 4
+2026-09-25 16:35:42.814 +05:30 [INF] [3fnpuq1o5wa] HTTP POST /api/leaves responded 201 in 6ms [Trace: 3fnpuq1o5wa]
+2026-09-25 16:35:42.829 +05:30 [INF] [fso1s9f4136] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: fso1s9f4136]
+2026-09-25 16:35:42.829 +05:30 [INF] [1z97jpxtvjh] HTTP GET /api/leaves responded 200 in 0ms [Trace: 1z97jpxtvjh]
+2026-09-25 16:35:46.454 +05:30 [INF] [b37i2xhbrw] LOGOUT. User 4
+2026-09-25 16:35:46.454 +05:30 [INF] [b37i2xhbrw] HTTP POST /api/auth/logout responded 204 in 8ms [Trace: b37i2xhbrw]
+2026-09-25 16:35:49.937 +05:30 [INF] [xwxszzno6sa] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-09-25 16:35:49.937 +05:30 [INF] [xwxszzno6sa] HTTP POST /api/auth/login responded 200 in 22ms [Trace: xwxszzno6sa]
+2026-09-25 16:35:49.968 +05:30 [INF] [3r5kx223jfw] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: 3r5kx223jfw]
+2026-09-25 16:35:49.968 +05:30 [INF] [3zgm6twt08o] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: 3zgm6twt08o]
+2026-09-25 16:35:49.968 +05:30 [INF] [iezbzn151vh] HTTP GET /api/leaves responded 200 in 0ms [Trace: iezbzn151vh]
+2026-09-25 16:35:49.982 +05:30 [INF] [sohl9owcar] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: sohl9owcar]
+2026-09-25 16:35:49.982 +05:30 [INF] [ymvjncffubp] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: ymvjncffubp]
+2026-09-25 16:35:49.982 +05:30 [INF] [pze6x5qn2p] HTTP GET /api/leaves responded 200 in 0ms [Trace: pze6x5qn2p]
+2026-09-25 16:35:49.982 +05:30 [INF] [x598ac6eb3j] HTTP GET /api/notifications responded 200 in 0ms [Trace: x598ac6eb3j]
+2026-09-25 16:35:49.994 +05:30 [INF] [pycqjg8fic] HTTP GET /api/notifications responded 200 in 0ms [Trace: pycqjg8fic]
+2026-09-25 16:35:56.062 +05:30 [INF] [0dr5xudnapqp] LOGOUT. User 1
+2026-09-25 16:35:56.062 +05:30 [INF] [0dr5xudnapqp] HTTP POST /api/auth/logout responded 204 in 11ms [Trace: 0dr5xudnapqp]
+2026-09-25 16:35:58.337 +05:30 [INF] [nt74wperf9j] LOGIN_SUCCESS. User manager@company.com, EmployeeId: 3
+2026-09-25 16:35:58.338 +05:30 [INF] [nt74wperf9j] HTTP POST /api/auth/login responded 200 in 25ms [Trace: nt74wperf9j]
+2026-09-25 16:35:58.371 +05:30 [INF] [tfhrqjbd358] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: tfhrqjbd358]
+2026-09-25 16:35:58.371 +05:30 [INF] [pihuq8dp6f7] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: pihuq8dp6f7]
+2026-09-25 16:35:58.371 +05:30 [INF] [cjkp5ny2pvs] HTTP GET /api/leaves responded 200 in 0ms [Trace: cjkp5ny2pvs]
+2026-09-25 16:35:58.383 +05:30 [INF] [q2jnykuqbfr] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: q2jnykuqbfr]
+2026-09-25 16:35:58.383 +05:30 [INF] [njqnzdksigd] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: njqnzdksigd]
+2026-09-25 16:35:58.383 +05:30 [INF] [jlib6s8h7h8] HTTP GET /api/leaves responded 200 in 0ms [Trace: jlib6s8h7h8]
+2026-09-25 16:35:58.384 +05:30 [INF] [zgyj8b3k6h] HTTP GET /api/notifications responded 200 in 0ms [Trace: zgyj8b3k6h]
+2026-09-25 16:35:58.395 +05:30 [INF] [02skbrs81alt] HTTP GET /api/notifications responded 200 in 0ms [Trace: 02skbrs81alt]
+2026-09-25 16:36:03.705 +05:30 [INF] [zhlgyjx85e9] HTTP GET /api/notifications responded 200 in 1ms [Trace: zhlgyjx85e9]
+2026-09-25 16:36:03.717 +05:30 [INF] [y7fw07nitsb] HTTP GET /api/notifications responded 200 in 1ms [Trace: y7fw07nitsb]
+2026-09-25 16:36:08.143 +05:30 [INF] [kvqx8vrtpwr] HTTP PUT /api/notifications/5/read responded 204 in 15ms [Trace: kvqx8vrtpwr]
+2026-09-25 16:36:08.160 +05:30 [INF] [k2dz78x63vl] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: k2dz78x63vl]
+2026-09-25 16:36:08.178 +05:30 [INF] [ye15tlbwf9] HTTP GET /api/notifications responded 200 in 1ms [Trace: ye15tlbwf9]
+2026-09-25 16:36:10.442 +05:30 [INF] [6k3d2fy7l3] HTTP GET /api/employees responded 403 in 0ms [Trace: 6k3d2fy7l3]
+2026-09-25 16:36:10.452 +05:30 [INF] [msexp022na] HTTP GET /api/employees responded 403 in 0ms [Trace: msexp022na]
+2026-09-25 16:36:16.986 +05:30 [INF] [nczeq52w9t] LOGOUT. User 3
+2026-09-25 16:36:16.986 +05:30 [INF] [nczeq52w9t] HTTP POST /api/auth/logout responded 204 in 6ms [Trace: nczeq52w9t]
+2026-09-25 16:36:23.363 +05:30 [INF] [rgbz86k8tge] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-09-25 16:36:23.363 +05:30 [INF] [rgbz86k8tge] HTTP POST /api/auth/login responded 200 in 24ms [Trace: rgbz86k8tge]
+2026-09-25 16:36:23.396 +05:30 [INF] [p5f2b44p1nl] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: p5f2b44p1nl]
+2026-09-25 16:36:23.397 +05:30 [INF] [6woq962rzdw] HTTP GET /api/attendance/today responded 200 in 0ms [Trace: 6woq962rzdw]
+2026-09-25 16:36:23.411 +05:30 [INF] [ng8e9fp4289] HTTP GET /api/notifications/unread-count responded 200 in 0ms [Trace: ng8e9fp4289]
+2026-09-25 16:36:23.411 +05:30 [INF] [7spuang4uif] HTTP GET /api/attendance/today responded 200 in 0ms [Trace: 7spuang4uif]
+2026-09-25 16:36:23.412 +05:30 [INF] [dg5uc2cakta] HTTP GET /api/notifications responded 200 in 0ms [Trace: dg5uc2cakta]
+2026-09-25 16:36:23.424 +05:30 [INF] [cvylvli1bq] HTTP GET /api/notifications responded 200 in 0ms [Trace: cvylvli1bq]
+2026-09-25 16:36:25.371 +05:30 [INF] [pcz2hd9h25i] HTTP GET /api/employees/4/payslips responded 200 in 1ms [Trace: pcz2hd9h25i]
+2026-09-25 16:36:25.384 +05:30 [INF] [ld1vwhyuago] HTTP GET /api/employees/4/payslips responded 200 in 1ms [Trace: ld1vwhyuago]
+2026-09-25 16:36:26.659 +05:30 [INF] [ee51jlaszrt] HTTP GET /api/employees responded 403 in 0ms [Trace: ee51jlaszrt]
+2026-09-25 16:36:26.664 +05:30 [INF] [y6q1j25usf] HTTP GET /api/projects responded 200 in 3ms [Trace: y6q1j25usf]
+2026-09-25 16:36:26.668 +05:30 [INF] [2utsk0qtmrm] HTTP GET /api/employees responded 403 in 0ms [Trace: 2utsk0qtmrm]
+2026-09-25 16:36:26.681 +05:30 [INF] [o7y1ydfqsod] HTTP GET /api/projects responded 200 in 1ms [Trace: o7y1ydfqsod]
+2026-09-25 16:36:27.157 +05:30 [INF] [16cgirrvw8r] HTTP GET /api/leaves/types responded 200 in 1ms [Trace: 16cgirrvw8r]
+2026-09-25 16:36:27.157 +05:30 [INF] [lzs8unsbjb] HTTP GET /api/leaves responded 200 in 1ms [Trace: lzs8unsbjb]
+2026-09-25 16:36:27.175 +05:30 [INF] [gnc2m2eg26] HTTP GET /api/leaves/types responded 200 in 0ms [Trace: gnc2m2eg26]
+2026-09-25 16:36:27.176 +05:30 [INF] [cke4iivh9fh] HTTP GET /api/leaves responded 200 in 1ms [Trace: cke4iivh9fh]
+2026-09-25 16:36:29.171 +05:30 [INF] [kpgtn01htp] HTTP GET /api/positions responded 200 in 0ms [Trace: kpgtn01htp]
+2026-09-25 16:36:29.185 +05:30 [INF] [i48chlzksi] HTTP GET /api/positions responded 200 in 0ms [Trace: i48chlzksi]
+2026-09-25 16:36:29.755 +05:30 [INF] [vglfvg03ipn] HTTP GET /api/departments responded 200 in 1ms [Trace: vglfvg03ipn]
+2026-09-25 16:36:29.777 +05:30 [INF] [fythn9xsw5j] HTTP GET /api/departments responded 200 in 1ms [Trace: fythn9xsw5j]
+2026-09-25 16:36:31.136 +05:30 [INF] [buadmzqnzfk] HTTP GET /api/employees responded 403 in 0ms [Trace: buadmzqnzfk]
+2026-09-25 16:36:31.137 +05:30 [INF] [0rj5au251yi] HTTP GET /api/positions responded 200 in 0ms [Trace: 0rj5au251yi]
+2026-09-25 16:36:31.137 +05:30 [INF] [amn8uf0s0bn] HTTP GET /api/departments responded 200 in 0ms [Trace: amn8uf0s0bn]
+2026-09-25 16:36:31.147 +05:30 [INF] [zi9kf89rc5j] HTTP GET /api/positions responded 200 in 0ms [Trace: zi9kf89rc5j]
+2026-09-25 16:36:31.147 +05:30 [INF] [yhtb7bya7] HTTP GET /api/departments responded 200 in 0ms [Trace: yhtb7bya7]
+2026-09-25 16:36:31.148 +05:30 [INF] [ycaq6107hms] HTTP GET /api/employees responded 403 in 0ms [Trace: ycaq6107hms]
+2026-09-25 16:36:31.908 +05:30 [INF] [g8save7k6ap] HTTP GET /api/attendance/today responded 200 in 1ms [Trace: g8save7k6ap]
+2026-09-25 16:36:31.917 +05:30 [INF] [ppws8pfn2dq] HTTP GET /api/attendance/today responded 200 in 0ms [Trace: ppws8pfn2dq]
+2026-09-25 16:36:39.303 +05:30 [INF] [3u7djw5wjul] HTTP GET /api/notifications responded 200 in 1ms [Trace: 3u7djw5wjul]
+2026-09-25 16:36:39.313 +05:30 [INF] [ey3wbhwo6c7] HTTP GET /api/notifications responded 200 in 1ms [Trace: ey3wbhwo6c7]
+2026-09-25 16:36:40.618 +05:30 [INF] [hbwl3k6r6vr] LOGOUT. User 4
+2026-09-25 16:36:40.619 +05:30 [INF] [hbwl3k6r6vr] HTTP POST /api/auth/logout responded 204 in 9ms [Trace: hbwl3k6r6vr]
+2026-09-25 17:29:45.324 +05:30 [INF] [] Now listening on: http://localhost:5000
+2026-09-25 17:29:45.368 +05:30 [INF] [] Application started. Press Ctrl+C to shut down.
+2026-09-25 17:29:45.369 +05:30 [INF] [] Hosting environment: Development
+2026-09-25 17:29:45.369 +05:30 [INF] [] Content root path: C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API
+2026-09-25 17:31:02.075 +05:30 [INF] [] Now listening on: http://localhost:5000
+2026-09-25 17:31:02.120 +05:30 [INF] [] Application started. Press Ctrl+C to shut down.
+2026-09-25 17:31:02.121 +05:30 [INF] [] Hosting environment: Development
+2026-09-25 17:31:02.121 +05:30 [INF] [] Content root path: C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API
+2026-09-25 17:33:27.673 +05:30 [INF] [] Now listening on: http://localhost:5000
+2026-09-25 17:33:27.717 +05:30 [INF] [] Application started. Press Ctrl+C to shut down.
+2026-09-25 17:33:27.718 +05:30 [INF] [] Hosting environment: Development
+2026-09-25 17:33:27.718 +05:30 [INF] [] Content root path: C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API

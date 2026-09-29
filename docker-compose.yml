@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ems-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: ems_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  ems-api:
+    build:
+      context: .
+      dockerfile: src/EMS.API/Dockerfile
+    container_name: ems-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=ems_db;Username=postgres;Password=postgrespassword
+      - Jwt__SecretKey=super_secret_jwt_key_ems_enterprise_2026_dev_prod_token_must_be_at_least_256_bits_long!
+      - Jwt__Issuer=EMS.API
+      - Jwt__Audience=EMS.Client
+      - Jwt__ExpiryMinutes=15
+    ports:
+      - "5000:5000"
+
+  ems-frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: ems-frontend
+    restart: unless-stopped
+    depends_on:
+      - ems-api
+    ports:
+      - "80:80"
+
+volumes:
+  pgdata:

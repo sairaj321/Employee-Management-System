@@ -181,4 +181,5 @@ C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\obj\Debug\net9.0\re
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\obj\Debug\net9.0\EMS.API.pdb
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\obj\Debug\net9.0\EMS.API.genruntimeconfig.cache
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\obj\Debug\net9.0\ref\EMS.API.dll
+C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\obj\Debug\net9.0\EMS.API.sourcelink.json
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

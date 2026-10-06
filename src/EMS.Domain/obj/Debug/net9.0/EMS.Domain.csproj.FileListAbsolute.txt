@@ -9,3 +9,4 @@ C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Domain\obj\Debug\net9.0
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Domain\obj\Debug\net9.0\refint\EMS.Domain.dll
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Domain\obj\Debug\net9.0\EMS.Domain.pdb
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Domain\obj\Debug\net9.0\ref\EMS.Domain.dll
+C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Domain\obj\Debug\net9.0\EMS.Domain.sourcelink.json

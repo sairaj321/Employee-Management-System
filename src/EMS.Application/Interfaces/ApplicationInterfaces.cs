@@ -73,6 +73,7 @@ public interface ILeaveService
     Task CancelAsync(int leaveId, int actingUserId, CancellationToken ct = default);
     Task<IReadOnlyList<LeaveDto>> GetLeavesAsync(int? employeeId, LeaveStatus? status, DateOnly? from, DateOnly? to, int? managerId, CancellationToken ct = default);
     Task<IReadOnlyList<LeaveTypeDto>> GetLeaveTypesAsync(CancellationToken ct = default);
+    Task<IReadOnlyList<LeaveBalanceDto>> GetLeaveBalancesAsync(int employeeId, int? year, CancellationToken ct = default);
 }
 
 public interface ISalaryService

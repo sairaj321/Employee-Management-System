@@ -94,11 +94,11 @@ export const ProjectsPage: React.FC = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <FolderGit2 className="h-6 w-6 text-emerald-400" />
+          <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
+            <FolderGit2 className="h-6 w-6 text-[#16A34A]" />
             Projects & Workflows
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">Track deliverables and allocate employee engineering teams</p>
+          <p className="text-xs text-slate-500 mt-0.5">Track deliverables and allocate employee engineering teams</p>
         </div>
 
         {hasPermission('Project.Create') && (
@@ -107,7 +107,7 @@ export const ProjectsPage: React.FC = () => {
               setManagerId(employees[0]?.id);
               setModalOpen(true);
             }}
-            className="flex items-center gap-2 rounded-xl bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white shadow-lg hover:bg-emerald-500 transition"
+            className="flex items-center gap-2 rounded-lg bg-[#2563EB] px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition"
           >
             <Plus className="h-4 w-4" />
             <span>New Project</span>
@@ -116,111 +116,117 @@ export const ProjectsPage: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((proj) => (
-          <div key={proj.id} className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 space-y-4">
-            <div className="flex items-start justify-between">
-              <div>
-                <h3 className="text-sm font-bold text-white">{proj.name}</h3>
-                <p className="text-xs text-slate-400 mt-1">{proj.description || 'No description'}</p>
-              </div>
-              <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-500/20">
-                {proj.status}
-              </span>
-            </div>
-
-            <div className="border-t border-slate-800/60 pt-3 flex justify-between text-xs text-slate-400">
-              <span>Manager: <strong className="text-slate-200">{proj.managerName || 'None'}</strong></span>
-              <span>Started: <strong className="text-slate-200">{new Date(proj.startDate).toLocaleDateString()}</strong></span>
-            </div>
-
-            {/* Assigned members */}
-            <div className="space-y-2 border-t border-slate-800/60 pt-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-300">Allocated Members ({proj.assignedEmployees.length})</span>
-                {hasRole(['Admin', 'HR', 'Manager']) && (
-                  <button
-                    onClick={() => {
-                      setSelectedProjectId(proj.id);
-                      setAssignModalOpen(true);
-                    }}
-                    className="text-[11px] text-indigo-400 hover:underline flex items-center gap-1"
-                  >
-                    <Plus className="h-3 w-3" /> Assign Member
-                  </button>
-                )}
+        {loading ? (
+          <div className="col-span-full py-8 text-center text-xs text-slate-400">Loading projects...</div>
+        ) : projects.length === 0 ? (
+          <div className="col-span-full py-8 text-center text-xs text-slate-400">No active projects found.</div>
+        ) : (
+          projects.map((proj) => (
+            <div key={proj.id} className="rounded-[10px] border border-[#E2E8F0] bg-white p-5 space-y-4 shadow-[0_1px_2px_rgba(15,23,42,0.06)]">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900">{proj.name}</h3>
+                  <p className="text-xs text-slate-500 mt-1">{proj.description || 'No description'}</p>
+                </div>
+                <span className="rounded-full bg-[#DCFCE7] px-2.5 py-0.5 text-[10px] font-bold text-[#15803D] border border-green-200">
+                  {proj.status}
+                </span>
               </div>
 
-              <div className="flex flex-wrap gap-2">
-                {proj.assignedEmployees.length === 0 ? (
-                  <span className="text-xs text-slate-500">No members assigned yet.</span>
-                ) : (
-                  proj.assignedEmployees.map((m) => (
-                    <span
-                      key={m.employeeId}
-                      className="inline-flex items-center gap-1.5 rounded-lg bg-slate-950 px-2.5 py-1 text-xs text-slate-300 border border-slate-800"
+              <div className="border-t border-[#E2E8F0] pt-3 flex justify-between text-xs text-slate-500">
+                <span>Manager: <strong className="text-slate-800 font-semibold">{proj.managerName || 'None'}</strong></span>
+                <span>Started: <strong className="text-slate-800 font-semibold">{new Date(proj.startDate).toLocaleDateString()}</strong></span>
+              </div>
+
+              {/* Assigned members */}
+              <div className="space-y-2 border-t border-[#E2E8F0] pt-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-700">Allocated Members ({proj.assignedEmployees.length})</span>
+                  {hasRole(['Admin', 'HR', 'Manager']) && (
+                    <button
+                      onClick={() => {
+                        setSelectedProjectId(proj.id);
+                        setAssignModalOpen(true);
+                      }}
+                      className="text-[11px] text-[#2563EB] hover:underline flex items-center gap-1 font-semibold"
                     >
-                      <span>{m.employeeName}</span>
-                      {hasRole(['Admin', 'HR', 'Manager']) && (
-                        <button
-                          onClick={() => handleRemoveEmployee(proj.id, m.employeeId)}
-                          className="text-slate-500 hover:text-rose-400"
-                        >
-                          <X className="h-3 w-3" />
-                        </button>
-                      )}
-                    </span>
-                  ))
-                )}
+                      <Plus className="h-3 w-3" /> Assign Member
+                    </button>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {proj.assignedEmployees.length === 0 ? (
+                    <span className="text-xs text-slate-400">No members assigned yet.</span>
+                  ) : (
+                    proj.assignedEmployees.map((m) => (
+                      <span
+                        key={m.employeeId}
+                        className="inline-flex items-center gap-1.5 rounded-lg bg-slate-50 px-2.5 py-1 text-xs text-slate-700 border border-[#E2E8F0]"
+                      >
+                        <span className="font-medium">{m.employeeName}</span>
+                        {hasRole(['Admin', 'HR', 'Manager']) && (
+                          <button
+                            onClick={() => handleRemoveEmployee(proj.id, m.employeeId)}
+                            className="text-slate-400 hover:text-[#DC2626] transition"
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
+                        )}
+                      </span>
+                    ))
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
 
       {/* Create Project Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-2xl">
-            <div className="flex justify-between items-center mb-4 border-b border-slate-800 pb-2">
-              <h3 className="text-sm font-bold text-white">Create Project</h3>
-              <button onClick={() => setModalOpen(false)} className="text-slate-400 hover:text-white"><X className="h-4 w-4" /></button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+          <div className="w-full max-w-md rounded-[10px] border border-[#E2E8F0] bg-white p-6 shadow-xl">
+            <div className="flex justify-between items-center mb-4 border-b border-[#E2E8F0] pb-2">
+              <h3 className="text-sm font-bold text-slate-900">Create Project</h3>
+              <button onClick={() => setModalOpen(false)} className="text-slate-400 hover:text-slate-900"><X className="h-4 w-4" /></button>
             </div>
             <form onSubmit={handleCreateProject} className="space-y-4 text-xs">
               <div>
-                <label className="block mb-1 text-slate-300">Project Name</label>
+                <label className="block mb-1 font-semibold text-slate-700">Project Name *</label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950 p-2 text-white"
+                  className="w-full rounded-lg border border-[#E2E8F0] bg-white p-2 text-slate-900 focus:border-[#2563EB] focus:outline-none"
                 />
               </div>
               <div>
-                <label className="block mb-1 text-slate-300">Description</label>
+                <label className="block mb-1 font-semibold text-slate-700">Description</label>
                 <textarea
                   rows={3}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950 p-2 text-white"
+                  className="w-full rounded-lg border border-[#E2E8F0] bg-white p-2 text-slate-900 focus:border-[#2563EB] focus:outline-none"
                 />
               </div>
               <div>
-                <label className="block mb-1 text-slate-300">Start Date</label>
+                <label className="block mb-1 font-semibold text-slate-700">Start Date *</label>
                 <input
                   type="date"
                   required
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950 p-2 text-white"
+                  className="w-full rounded-lg border border-[#E2E8F0] bg-white p-2 text-slate-900 focus:border-[#2563EB] focus:outline-none"
                 />
               </div>
               <div>
-                <label className="block mb-1 text-slate-300">Lead Manager</label>
+                <label className="block mb-1 font-semibold text-slate-700">Lead Manager</label>
                 <select
                   value={managerId || ''}
                   onChange={(e) => setManagerId(e.target.value ? Number(e.target.value) : undefined)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950 p-2 text-white"
+                  className="w-full rounded-lg border border-[#E2E8F0] bg-white p-2 text-slate-900 focus:border-[#2563EB] focus:outline-none"
                 >
                   <option value="">Unassigned</option>
                   {employees.map((e) => (
@@ -228,9 +234,9 @@ export const ProjectsPage: React.FC = () => {
                   ))}
                 </select>
               </div>
-              <div className="flex justify-end gap-2 pt-3">
-                <button type="button" onClick={() => setModalOpen(false)} className="px-3 py-1.5 border border-slate-700 rounded text-slate-300">Cancel</button>
-                <button type="submit" className="px-4 py-1.5 bg-emerald-600 rounded text-white font-bold">Create</button>
+              <div className="flex justify-end gap-2 pt-3 border-t border-[#E2E8F0]">
+                <button type="button" onClick={() => setModalOpen(false)} className="px-3.5 py-1.5 border border-[#E2E8F0] rounded-lg text-slate-600 hover:bg-slate-50 transition">Cancel</button>
+                <button type="submit" className="px-4 py-1.5 bg-[#2563EB] hover:bg-blue-700 rounded-lg text-white font-bold transition shadow-sm">Create</button>
               </div>
             </form>
           </div>
@@ -239,28 +245,28 @@ export const ProjectsPage: React.FC = () => {
 
       {/* Assign Employee Modal */}
       {assignModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-sm rounded-2xl border border-slate-800 bg-slate-900 p-5 shadow-2xl">
-            <div className="flex justify-between items-center mb-3 border-b border-slate-800 pb-2">
-              <h3 className="text-sm font-bold text-white">Assign Member</h3>
-              <button onClick={() => setAssignModalOpen(false)} className="text-slate-400 hover:text-white"><X className="h-4 w-4" /></button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+          <div className="w-full max-w-sm rounded-[10px] border border-[#E2E8F0] bg-white p-5 shadow-xl">
+            <div className="flex justify-between items-center mb-3 border-b border-[#E2E8F0] pb-2">
+              <h3 className="text-sm font-bold text-slate-900">Assign Member</h3>
+              <button onClick={() => setAssignModalOpen(false)} className="text-slate-400 hover:text-slate-900"><X className="h-4 w-4" /></button>
             </div>
             <form onSubmit={handleAssignEmployee} className="space-y-4 text-xs">
               <div>
-                <label className="block mb-1 text-slate-300">Select Employee</label>
+                <label className="block mb-1 font-semibold text-slate-700">Select Employee *</label>
                 <select
                   value={assignEmpId}
                   onChange={(e) => setAssignEmpId(Number(e.target.value))}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950 p-2 text-white"
+                  className="w-full rounded-lg border border-[#E2E8F0] bg-white p-2 text-slate-900 focus:border-[#2563EB] focus:outline-none"
                 >
                   {employees.map((e) => (
                     <option key={e.id} value={e.id}>{e.firstName} {e.lastName} ({e.employeeCode})</option>
                   ))}
                 </select>
               </div>
-              <div className="flex justify-end gap-2 pt-2">
-                <button type="button" onClick={() => setAssignModalOpen(false)} className="px-3 py-1.5 border border-slate-700 rounded text-slate-300">Cancel</button>
-                <button type="submit" className="px-4 py-1.5 bg-indigo-600 rounded text-white font-bold">Assign</button>
+              <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0]">
+                <button type="button" onClick={() => setAssignModalOpen(false)} className="px-3.5 py-1.5 border border-[#E2E8F0] rounded-lg text-slate-600 hover:bg-slate-50 transition">Cancel</button>
+                <button type="submit" className="px-4 py-1.5 bg-[#2563EB] hover:bg-blue-700 rounded-lg text-white font-bold transition shadow-sm">Assign</button>
               </div>
             </form>
           </div>

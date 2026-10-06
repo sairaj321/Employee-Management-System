@@ -1,0 +1,6 @@
+{
+  "EMS.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\sairajk\\.gemini\\antigravity\\scratch\\EMS\\src\\EMS.API",
+  "EMS.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\sairajk\\.gemini\\antigravity\\scratch\\EMS\\src\\EMS.Application",
+  "EMS.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\sairajk\\.gemini\\antigravity\\scratch\\EMS\\src\\EMS.Domain",
+  "EMS.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\sairajk\\.gemini\\antigravity\\scratch\\EMS\\src\\EMS.Infrastructure"
+}

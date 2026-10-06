@@ -277,6 +277,185 @@ public class AttendanceAndLeaveServiceTests
         var act = () => _leaveService.ApplyAsync(dto, 1);
         await act.Should().ThrowAsync<ValidationException>();
     }
+
+    [Fact]
+    public async Task Leave_Approve_ByReportingManager_Succeeds()
+    {
+        // Arrange
+        var managerUser = new User { Id = 10, Email = "mgr@company.com" };
+        var managerEmp = new Employee { Id = 2, UserId = 10, FirstName = "Boss", LastName = "Man" };
+        var empUser = new User { Id = 20, Email = "emp@company.com" };
+        var emp = new Employee { Id = 5, UserId = 20, FirstName = "John", LastName = "Doe", ManagerId = 2 };
+        var leave = new Leave { Id = 100, EmployeeId = 5, Employee = emp, Status = LeaveStatus.Pending, StartDate = new DateOnly(2026, 10, 1), EndDate = new DateOnly(2026, 10, 5) };
+
+        _uowMock.Setup(u => u.Leaves.GetByIdAsync(100, It.IsAny<CancellationToken>())).ReturnsAsync(leave);
+        _uowMock.Setup(u => u.Employees.GetByUserIdAsync(10, It.IsAny<CancellationToken>())).ReturnsAsync(managerEmp);
+        _uowMock.Setup(u => u.Users.GetByIdAsync(10, It.IsAny<CancellationToken>())).ReturnsAsync(managerUser);
+
+        // Act
+        var result = await _leaveService.ApproveAsync(100, new ApproveLeaveDto { Approved = true }, 10);
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Status.Should().Be(LeaveStatus.Approved);
+        leave.ApprovedBy.Should().Be(2);
+        _uowMock.Verify(u => u.Leaves.Update(leave), Times.Once);
+    }
+
+    [Fact]
+    public async Task Leave_Approve_ByHR_Succeeds()
+    {
+        // Arrange
+        var hrRole = new Role { Id = 2, Name = "HR" };
+        var hrUser = new User
+        {
+            Id = 30,
+            Email = "hr@company.com",
+            UserRoles = new List<UserRole> { new() { RoleId = 2, Role = hrRole } }
+        };
+        var hrEmp = new Employee { Id = 3, UserId = 30, FirstName = "HR", LastName = "Admin" };
+        var emp = new Employee { Id = 5, UserId = 20, FirstName = "John", LastName = "Doe", ManagerId = 99 };
+        var leave = new Leave { Id = 101, EmployeeId = 5, Employee = emp, Status = LeaveStatus.Pending };
+
+        _uowMock.Setup(u => u.Leaves.GetByIdAsync(101, It.IsAny<CancellationToken>())).ReturnsAsync(leave);
+        _uowMock.Setup(u => u.Employees.GetByUserIdAsync(30, It.IsAny<CancellationToken>())).ReturnsAsync(hrEmp);
+        _uowMock.Setup(u => u.Users.GetByIdAsync(30, It.IsAny<CancellationToken>())).ReturnsAsync(hrUser);
+
+        // Act
+        var result = await _leaveService.ApproveAsync(101, new ApproveLeaveDto { Approved = true }, 30);
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Status.Should().Be(LeaveStatus.Approved);
+        leave.ApprovedBy.Should().Be(3);
+    }
+
+    [Fact]
+    public async Task Leave_Approve_ByUnrelatedManager_ThrowsForbiddenException()
+    {
+        // Arrange
+        var managerEmp = new Employee { Id = 9, UserId = 90 };
+        var managerUser = new User { Id = 90, UserRoles = new List<UserRole>() };
+        var emp = new Employee { Id = 5, UserId = 20, ManagerId = 2 }; // Manager is 2, not 9
+        var leave = new Leave { Id = 102, EmployeeId = 5, Employee = emp, Status = LeaveStatus.Pending };
+
+        _uowMock.Setup(u => u.Leaves.GetByIdAsync(102, It.IsAny<CancellationToken>())).ReturnsAsync(leave);
+        _uowMock.Setup(u => u.Employees.GetByUserIdAsync(90, It.IsAny<CancellationToken>())).ReturnsAsync(managerEmp);
+        _uowMock.Setup(u => u.Users.GetByIdAsync(90, It.IsAny<CancellationToken>())).ReturnsAsync(managerUser);
+
+        // Act & Assert
+        var act = () => _leaveService.ApproveAsync(102, new ApproveLeaveDto { Approved = true }, 90);
+        await act.Should().ThrowAsync<ForbiddenException>().WithMessage("*Only the employee's reporting manager or HR*");
+    }
+
+    [Fact]
+    public async Task Leave_Approve_SelfApproval_ThrowsForbiddenException()
+    {
+        // Arrange
+        var managerEmp = new Employee { Id = 2, UserId = 10, ManagerId = 1 };
+        var managerUser = new User
+        {
+            Id = 10,
+            UserRoles = new List<UserRole> { new() { Role = new Role { Name = "Manager" } } }
+        };
+        var leave = new Leave { Id = 103, EmployeeId = 2, Employee = managerEmp, Status = LeaveStatus.Pending };
+
+        _uowMock.Setup(u => u.Leaves.GetByIdAsync(103, It.IsAny<CancellationToken>())).ReturnsAsync(leave);
+        _uowMock.Setup(u => u.Employees.GetByUserIdAsync(10, It.IsAny<CancellationToken>())).ReturnsAsync(managerEmp);
+        _uowMock.Setup(u => u.Users.GetByIdAsync(10, It.IsAny<CancellationToken>())).ReturnsAsync(managerUser);
+
+        // Act & Assert
+        var act = () => _leaveService.ApproveAsync(103, new ApproveLeaveDto { Approved = true }, 10);
+        await act.Should().ThrowAsync<ForbiddenException>().WithMessage("*Employees cannot approve or reject their own leave requests*");
+    }
+
+    [Fact]
+    public async Task Leave_Approve_CancelledLeave_ThrowsConflictException()
+    {
+        // Arrange
+        var hrUser = new User { Id = 30, UserRoles = new List<UserRole> { new() { Role = new Role { Name = "HR" } } } };
+        var hrEmp = new Employee { Id = 3, UserId = 30 };
+        var leave = new Leave { Id = 104, EmployeeId = 5, Status = LeaveStatus.Cancelled };
+
+        _uowMock.Setup(u => u.Leaves.GetByIdAsync(104, It.IsAny<CancellationToken>())).ReturnsAsync(leave);
+
+        // Act & Assert
+        var act = () => _leaveService.ApproveAsync(104, new ApproveLeaveDto { Approved = true }, 30);
+        await act.Should().ThrowAsync<ConflictException>().WithMessage("*Cannot approve or reject a cancelled leave request*");
+    }
+
+    [Fact]
+    public async Task Leave_Apply_ExceedingAvailableQuota_ThrowsConflictException()
+    {
+        // Arrange
+        var leaveType = new LeaveType { Id = 1, Name = "Casual Leave", DefaultDaysPerYear = 6 };
+        var emp = new Employee { Id = 5, UserId = 20, FirstName = "John", LastName = "Doe" };
+        var existingApprovedLeave = new Leave
+        {
+            Id = 50,
+            EmployeeId = 5,
+            LeaveTypeId = 1,
+            StartDate = new DateOnly(2026, 3, 1),
+            EndDate = new DateOnly(2026, 3, 4), // 4 days
+            Status = LeaveStatus.Approved
+        };
+
+        _uowMock.Setup(u => u.Leaves.GetLeaveTypeByIdAsync(1, It.IsAny<CancellationToken>())).ReturnsAsync(leaveType);
+        _uowMock.Setup(u => u.Leaves.HasOverlappingLeaveAsync(5, It.IsAny<DateOnly>(), It.IsAny<DateOnly>(), null, It.IsAny<CancellationToken>())).ReturnsAsync(false);
+        _uowMock.Setup(u => u.Leaves.GetLeavesAsync(5, null, null, null, null, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new List<Leave> { existingApprovedLeave });
+
+        var dto = new ApplyLeaveDto
+        {
+            EmployeeId = 5,
+            LeaveTypeId = 1,
+            StartDate = new DateOnly(2026, 6, 1),
+            EndDate = new DateOnly(2026, 6, 4), // 4 days requested, but only 2 available (6 - 4)
+            Reason = "Trip"
+        };
+
+        // Act & Assert
+        var act = () => _leaveService.ApplyAsync(dto, 20);
+        await act.Should().ThrowAsync<ConflictException>().WithMessage("*Insufficient leave balance for Casual Leave. Available: 2 days, Requested: 4 days*");
+    }
+
+    [Fact]
+    public async Task Leave_GetLeaveBalances_CalculatesAllocatedUsedAndAvailableCorrectly()
+    {
+        // Arrange
+        var emp = new Employee { Id = 5, UserId = 20, FirstName = "Alex", LastName = "Rivera" };
+        var leaveTypes = new List<LeaveType>
+        {
+            new() { Id = 1, Name = "Annual Leave", DefaultDaysPerYear = 18 },
+            new() { Id = 2, Name = "Sick Leave", DefaultDaysPerYear = 12 }
+        };
+        var leaves = new List<Leave>
+        {
+            new() { EmployeeId = 5, LeaveTypeId = 1, StartDate = new DateOnly(2026, 1, 10), EndDate = new DateOnly(2026, 1, 14), Status = LeaveStatus.Approved }, // 5 days approved
+            new() { EmployeeId = 5, LeaveTypeId = 1, StartDate = new DateOnly(2026, 4, 1), EndDate = new DateOnly(2026, 4, 2), Status = LeaveStatus.Pending } // 2 days pending
+        };
+
+        _uowMock.Setup(u => u.Employees.GetByIdAsync(5, It.IsAny<CancellationToken>())).ReturnsAsync(emp);
+        _uowMock.Setup(u => u.Leaves.GetAllLeaveTypesAsync(It.IsAny<CancellationToken>())).ReturnsAsync(leaveTypes);
+        _uowMock.Setup(u => u.Leaves.GetLeavesAsync(5, null, null, null, null, It.IsAny<CancellationToken>())).ReturnsAsync(leaves);
+
+        // Act
+        var balances = await _leaveService.GetLeaveBalancesAsync(5, 2026);
+
+        // Assert
+        balances.Should().HaveCount(2);
+        var annual = balances.First(b => b.LeaveTypeId == 1);
+        annual.TotalAllocatedDays.Should().Be(18);
+        annual.UsedDays.Should().Be(5);
+        annual.PendingDays.Should().Be(2);
+        annual.AvailableDays.Should().Be(11); // 18 - 5 - 2
+
+        var sick = balances.First(b => b.LeaveTypeId == 2);
+        sick.TotalAllocatedDays.Should().Be(12);
+        sick.UsedDays.Should().Be(0);
+        sick.PendingDays.Should().Be(0);
+        sick.AvailableDays.Should().Be(12);
+    }
 }
 
 public class AuthorizationHandlerTests

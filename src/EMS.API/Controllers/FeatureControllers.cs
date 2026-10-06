@@ -22,11 +22,19 @@ public class AttendanceController : BaseApiController
     [Authorize(Policy = "Attendance.CheckIn.Own")]
     public async Task<IActionResult> CheckIn([FromBody] CheckInRequestDto? request, CancellationToken ct)
     {
-        var targetEmployeeId = request?.EmployeeId ?? CallerEmployeeId;
-        if (!targetEmployeeId.HasValue)
-            throw new NotFoundException("Employee profile not linked to caller.");
+        int targetEmployeeId;
+        if (HasGlobalAttendanceRead && request?.EmployeeId.HasValue == true && request.EmployeeId.Value > 0)
+        {
+            targetEmployeeId = request.EmployeeId.Value;
+        }
+        else
+        {
+            if (!CallerEmployeeId.HasValue)
+                throw new NotFoundException("Employee profile not linked to caller.");
+            targetEmployeeId = CallerEmployeeId.Value;
+        }
 
-        var result = await _attendanceService.CheckInAsync(targetEmployeeId.Value, ActingUserId, ct);
+        var result = await _attendanceService.CheckInAsync(targetEmployeeId, ActingUserId, ct);
         return OkResponse(result, "Check-in recorded successfully.");
     }
 
@@ -34,11 +42,19 @@ public class AttendanceController : BaseApiController
     [Authorize(Policy = "Attendance.CheckIn.Own")]
     public async Task<IActionResult> CheckOut([FromBody] CheckInRequestDto? request, CancellationToken ct)
     {
-        var targetEmployeeId = request?.EmployeeId ?? CallerEmployeeId;
-        if (!targetEmployeeId.HasValue)
-            throw new NotFoundException("Employee profile not linked to caller.");
+        int targetEmployeeId;
+        if (HasGlobalAttendanceRead && request?.EmployeeId.HasValue == true && request.EmployeeId.Value > 0)
+        {
+            targetEmployeeId = request.EmployeeId.Value;
+        }
+        else
+        {
+            if (!CallerEmployeeId.HasValue)
+                throw new NotFoundException("Employee profile not linked to caller.");
+            targetEmployeeId = CallerEmployeeId.Value;
+        }
 
-        var result = await _attendanceService.CheckOutAsync(targetEmployeeId.Value, ActingUserId, ct);
+        var result = await _attendanceService.CheckOutAsync(targetEmployeeId, ActingUserId, ct);
         return OkResponse(result, "Check-out recorded successfully.");
     }
 
@@ -46,11 +62,19 @@ public class AttendanceController : BaseApiController
     [Authorize(Policy = "Attendance.Read.Own")]
     public async Task<IActionResult> GetTodayStatus([FromQuery] int? employeeId, CancellationToken ct)
     {
-        var targetEmployeeId = employeeId ?? CallerEmployeeId;
-        if (!targetEmployeeId.HasValue)
-            throw new NotFoundException("Employee profile not found.");
+        int targetEmployeeId;
+        if (HasGlobalAttendanceRead && employeeId.HasValue && employeeId.Value > 0)
+        {
+            targetEmployeeId = employeeId.Value;
+        }
+        else
+        {
+            if (!CallerEmployeeId.HasValue)
+                throw new NotFoundException("Employee profile not found.");
+            targetEmployeeId = CallerEmployeeId.Value;
+        }
 
-        var result = await _attendanceService.GetTodayStatusAsync(targetEmployeeId.Value, ct);
+        var result = await _attendanceService.GetTodayStatusAsync(targetEmployeeId, ct);
         return OkResponse(result);
     }
 
@@ -58,6 +82,16 @@ public class AttendanceController : BaseApiController
     [Authorize(Policy = "Attendance.Read.Own")]
     public async Task<IActionResult> GetHistory([FromQuery] AttendanceQueryDto query, CancellationToken ct)
     {
+        if (!HasGlobalAttendanceRead)
+        {
+            // Standard employee / non-privileged role: strictly bind to the authenticated caller's EmployeeId
+            if (!CallerEmployeeId.HasValue)
+                return OkResponse(Array.Empty<AttendanceDto>());
+
+            query.EmployeeId = CallerEmployeeId.Value;
+            query.DepartmentId = null;
+        }
+
         var result = await _attendanceService.GetHistoryAsync(query, ct);
         return OkResponse(result);
     }
@@ -78,8 +112,17 @@ public class LeavesController : BaseApiController
     [Authorize(Policy = "Leave.Create.Own")]
     public async Task<IActionResult> Apply([FromBody] ApplyLeaveDto dto, CancellationToken ct)
     {
-        if (!dto.EmployeeId.HasValue && CallerEmployeeId.HasValue)
+        if (!HasGlobalLeaveRead)
+        {
+            if (!CallerEmployeeId.HasValue)
+                throw new NotFoundException("Employee profile not linked to caller.");
             dto.EmployeeId = CallerEmployeeId.Value;
+        }
+        else
+        {
+            if (!dto.EmployeeId.HasValue && CallerEmployeeId.HasValue)
+                dto.EmployeeId = CallerEmployeeId.Value;
+        }
 
         var result = await _leaveService.ApplyAsync(dto, ActingUserId, ct);
         return CreatedResponse($"/api/leaves/{result.Id}", result, "Leave application submitted.");
@@ -87,15 +130,84 @@ public class LeavesController : BaseApiController
 
     [HttpGet]
     [Authorize(Policy = "Leave.Read.Own")]
-    public async Task<IActionResult> GetLeaves(
+    public  async Task<IActionResult> GetLeaves(
         [FromQuery] int? employeeId,
         [FromQuery] LeaveStatus? status,
         [FromQuery] DateOnly? from,
         [FromQuery] DateOnly? to,
         [FromQuery] int? managerId,
+        [FromQuery] bool? teamOnly,
         CancellationToken ct)
     {
+        if (!HasGlobalLeaveRead)
+        {
+            if (!CallerEmployeeId.HasValue)
+                return OkResponse(Array.Empty<LeaveDto>());
+
+            if (HasTeamLeaveRead)
+            {
+                if (teamOnly == true || (managerId.HasValue && managerId.Value == CallerEmployeeId.Value))
+                {
+                    // Manager querying team leaves
+                    managerId = CallerEmployeeId.Value;
+                    employeeId = null;
+                }
+                else if (employeeId.HasValue && employeeId.Value != CallerEmployeeId.Value)
+                {
+                    // Manager querying specific direct report
+                    managerId = CallerEmployeeId.Value;
+                }
+                else
+                {
+                    // Default to own leaves unless explicitly requesting team
+                    employeeId = CallerEmployeeId.Value;
+                    managerId = null;
+                }
+            }
+            else
+            {
+                // Standard employee: strictly query records belonging to the authenticated employee
+                employeeId = CallerEmployeeId.Value;
+                managerId = null;
+            }
+        }
+
         var result = await _leaveService.GetLeavesAsync(employeeId, status, from, to, managerId, ct);
+        return OkResponse(result);
+    }
+
+    [HttpGet("pending-approvals")]
+    [Authorize(Policy = "Leave.Approve.Team")]
+    public async Task<IActionResult> GetPendingApprovals(CancellationToken ct)
+    {
+        int? managerId = null;
+        if (!HasGlobalLeaveRead)
+        {
+            managerId = CallerEmployeeId;
+        }
+
+        // Returns only pending leave requests (approved/rejected leaves are excluded)
+        var result = await _leaveService.GetLeavesAsync(null, LeaveStatus.Pending, null, null, managerId, ct);
+        return OkResponse(result);
+    }
+
+    [HttpGet("balances")]
+    [Authorize(Policy = "Leave.Read.Own")]
+    public async Task<IActionResult> GetLeaveBalances([FromQuery] int? employeeId, [FromQuery] int? year, CancellationToken ct)
+    {
+        int targetEmployeeId;
+        if (HasGlobalLeaveRead && employeeId.HasValue && employeeId.Value > 0)
+        {
+            targetEmployeeId = employeeId.Value;
+        }
+        else
+        {
+            if (!CallerEmployeeId.HasValue)
+                throw new NotFoundException("Employee profile not linked to caller.");
+            targetEmployeeId = CallerEmployeeId.Value;
+        }
+
+        var result = await _leaveService.GetLeaveBalancesAsync(targetEmployeeId, year, ct);
         return OkResponse(result);
     }
 

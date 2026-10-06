@@ -1,4 +1,4 @@
-using EMS.Domain.Entities;
+  using EMS.Domain.Entities;
 using EMS.Domain.Enums;
 using EMS.Domain.Interfaces;
 using EMS.Infrastructure.Persistence;
@@ -80,6 +80,7 @@ public class LeaveRepository : ILeaveRepository
     {
         return await _context.Leaves
             .Include(l => l.Employee)
+                .ThenInclude(e => e.Manager)
             .Include(l => l.LeaveType)
             .Include(l => l.Approver)
             .FirstOrDefaultAsync(l => l.Id == id, ct);

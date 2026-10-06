@@ -1,0 +1,258 @@
+2026-10-05 12:36:27.526 +05:30 [WRN] [02d01af1d15a4024b914ce7ff1b5b0da] LOGIN_FAILED. Incorrect password for user: admin@company.com, count: 1
+2026-10-05 12:36:27.600 +05:30 [INF] [90076b66562f4081a3c10edc9be9b16d] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 12:36:27.621 +05:30 [INF] [90076b66562f4081a3c10edc9be9b16d] HTTP POST /api/auth/login responded 200 in 48ms [Trace: 90076b66562f4081a3c10edc9be9b16d]
+2026-10-05 12:36:27.710 +05:30 [INF] [45f0b289fea6433c98bcc7577354b2aa] EMPLOYEE_CREATED. EmployeeId: 5, CreatedBy: 1
+2026-10-05 12:36:27.744 +05:30 [INF] [45f0b289fea6433c98bcc7577354b2aa] HTTP POST /api/employees responded 201 in 115ms [Trace: 45f0b289fea6433c98bcc7577354b2aa]
+2026-10-05 12:36:27.752 +05:30 [INF] [4b3f2c44b58045e7b8edfa74622ed5aa] HTTP GET /api/employees/5 responded 200 in 4ms [Trace: 4b3f2c44b58045e7b8edfa74622ed5aa]
+2026-10-05 12:36:27.769 +05:30 [INF] [5ae78daa27214070a6267c459d52473c] HTTP GET /api/employees/5/salary responded 200 in 15ms [Trace: 5ae78daa27214070a6267c459d52473c]
+2026-10-05 12:36:27.793 +05:30 [INF] [6c3a8dfc8fcb468a85676dd8b237aba4] PAYSLIP_GENERATED. EmployeeId: 5, Month: 9, Year: 2026
+2026-10-05 12:36:27.794 +05:30 [INF] [6c3a8dfc8fcb468a85676dd8b237aba4] HTTP POST /api/employees/5/payslips/generate responded 201 in 24ms [Trace: 6c3a8dfc8fcb468a85676dd8b237aba4]
+2026-10-05 12:36:27.797 +05:30 [INF] [7e7384f553f742f0adbb1b6748327d80] HTTP GET /api/employees responded 401 in 1ms [Trace: 7e7384f553f742f0adbb1b6748327d80]
+2026-10-05 12:36:27.809 +05:30 [INF] [a2b37bb20ba94ebba1888cf78a11322e] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 12:36:27.809 +05:30 [INF] [a2b37bb20ba94ebba1888cf78a11322e] HTTP POST /api/auth/login responded 200 in 11ms [Trace: a2b37bb20ba94ebba1888cf78a11322e]
+2026-10-05 12:41:02.164 +05:30 [INF] [39ec3e58671e44ceb6664658239dbb64] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 12:41:02.189 +05:30 [INF] [39ec3e58671e44ceb6664658239dbb64] HTTP POST /api/auth/login responded 200 in 154ms [Trace: 39ec3e58671e44ceb6664658239dbb64]
+2026-10-05 12:41:02.256 +05:30 [INF] [855214a19dfe4047bccf0efeabfc4db1] HTTP GET /api/attendance responded 200 in 60ms [Trace: 855214a19dfe4047bccf0efeabfc4db1]
+2026-10-05 12:41:02.264 +05:30 [INF] [cb8789a7c99f45019a9c0179ab1ed926] HTTP GET /api/attendance responded 403 in 3ms [Trace: cb8789a7c99f45019a9c0179ab1ed926]
+2026-10-05 12:41:02.285 +05:30 [INF] [aace72c423d547e293d54a9bec86c61e] CHECK_IN. EmployeeId: 4, Status: "Present"
+2026-10-05 12:41:02.286 +05:30 [INF] [aace72c423d547e293d54a9bec86c61e] HTTP POST /api/attendance/check-in responded 200 in 21ms [Trace: aace72c423d547e293d54a9bec86c61e]
+2026-10-05 12:41:02.300 +05:30 [WRN] [1002ee7fee01478fb813036317c30157] LOGIN_FAILED. Incorrect password for user: admin@company.com, count: 1
+2026-10-05 12:41:02.317 +05:30 [INF] [184382693d0c46f88f1096370b258d04] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 12:41:02.317 +05:30 [INF] [184382693d0c46f88f1096370b258d04] HTTP POST /api/auth/login responded 200 in 10ms [Trace: 184382693d0c46f88f1096370b258d04]
+2026-10-05 12:41:02.329 +05:30 [INF] [c85ac18d70054b829b23e9a81f603d82] HTTP GET /api/attendance responded 200 in 10ms [Trace: c85ac18d70054b829b23e9a81f603d82]
+2026-10-05 12:41:02.340 +05:30 [INF] [df4d49788de24b5585c8300da6faca4d] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 12:41:02.340 +05:30 [INF] [df4d49788de24b5585c8300da6faca4d] HTTP POST /api/auth/login responded 200 in 9ms [Trace: df4d49788de24b5585c8300da6faca4d]
+2026-10-05 12:41:02.393 +05:30 [INF] [8342230748184714afec3b58c3075b0e] LEAVE_APPLIED. LeaveId: 1, EmployeeId: 4
+2026-10-05 12:41:02.395 +05:30 [INF] [8342230748184714afec3b58c3075b0e] HTTP POST /api/leaves responded 201 in 53ms [Trace: 8342230748184714afec3b58c3075b0e]
+2026-10-05 12:41:02.425 +05:30 [INF] [5f99f1425de74e17b4bc5b3c9002b937] HTTP GET /api/leaves responded 200 in 28ms [Trace: 5f99f1425de74e17b4bc5b3c9002b937]
+2026-10-05 12:41:02.437 +05:30 [INF] [2b2432fe7bc445f99e51ecec8b725110] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 12:41:02.438 +05:30 [INF] [2b2432fe7bc445f99e51ecec8b725110] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 2b2432fe7bc445f99e51ecec8b725110]
+2026-10-05 12:41:02.488 +05:30 [INF] [1cf5d16633f84f76b2e45a81eda664eb] EMPLOYEE_CREATED. EmployeeId: 5, CreatedBy: 1
+2026-10-05 12:41:02.490 +05:30 [INF] [1cf5d16633f84f76b2e45a81eda664eb] HTTP POST /api/employees responded 201 in 48ms [Trace: 1cf5d16633f84f76b2e45a81eda664eb]
+2026-10-05 12:41:02.494 +05:30 [INF] [276c80c6e1dd4af18f1fd476b43f0933] HTTP GET /api/employees/5 responded 200 in 2ms [Trace: 276c80c6e1dd4af18f1fd476b43f0933]
+2026-10-05 12:41:02.507 +05:30 [INF] [d97cc22ba3994395b9f6975de9b2d6d3] HTTP GET /api/employees/5/salary responded 200 in 11ms [Trace: d97cc22ba3994395b9f6975de9b2d6d3]
+2026-10-05 12:41:02.528 +05:30 [INF] [d1718f6e17f84e5cb460b9c9ea714e7e] PAYSLIP_GENERATED. EmployeeId: 5, Month: 9, Year: 2026
+2026-10-05 12:41:02.529 +05:30 [INF] [d1718f6e17f84e5cb460b9c9ea714e7e] HTTP POST /api/employees/5/payslips/generate responded 201 in 21ms [Trace: d1718f6e17f84e5cb460b9c9ea714e7e]
+2026-10-05 12:41:02.532 +05:30 [INF] [ae71c48ec6f44356b702a1319c9dc024] HTTP GET /api/employees responded 401 in 1ms [Trace: ae71c48ec6f44356b702a1319c9dc024]
+2026-10-05 12:41:02.543 +05:30 [INF] [bfc716420a984a64a7ccc31bd317606d] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 12:41:02.543 +05:30 [INF] [bfc716420a984a64a7ccc31bd317606d] HTTP POST /api/auth/login responded 200 in 9ms [Trace: bfc716420a984a64a7ccc31bd317606d]
+2026-10-05 14:08:49.902 +05:30 [INF] [d1a8d4da670e43f088288c65512b3354] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:08:49.929 +05:30 [INF] [d1a8d4da670e43f088288c65512b3354] HTTP POST /api/auth/login responded 200 in 162ms [Trace: d1a8d4da670e43f088288c65512b3354]
+2026-10-05 14:08:50.003 +05:30 [INF] [d42647b4e9a044869aa54a5c0e028451] HTTP GET /api/attendance responded 200 in 67ms [Trace: d42647b4e9a044869aa54a5c0e028451]
+2026-10-05 14:08:50.012 +05:30 [INF] [f89766f1d76f4a63ababecbbb56ddc1c] HTTP GET /api/attendance responded 403 in 3ms [Trace: f89766f1d76f4a63ababecbbb56ddc1c]
+2026-10-05 14:08:50.035 +05:30 [INF] [456220b735f6487694b5bc7fdc4d9e69] CHECK_IN. EmployeeId: 4, Status: "Present"
+2026-10-05 14:08:50.035 +05:30 [INF] [456220b735f6487694b5bc7fdc4d9e69] HTTP POST /api/attendance/check-in responded 200 in 22ms [Trace: 456220b735f6487694b5bc7fdc4d9e69]
+2026-10-05 14:08:50.053 +05:30 [WRN] [7d7098ff4852447780ce9777258f7afc] LOGIN_FAILED. Incorrect password for user: admin@company.com, count: 1
+2026-10-05 14:08:50.069 +05:30 [INF] [d812338142734301b79670f7678c6053] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:08:50.069 +05:30 [INF] [d812338142734301b79670f7678c6053] HTTP POST /api/auth/login responded 200 in 10ms [Trace: d812338142734301b79670f7678c6053]
+2026-10-05 14:08:50.081 +05:30 [INF] [28d6f96cb1554e60b1a065d7e17449e2] HTTP GET /api/attendance responded 200 in 10ms [Trace: 28d6f96cb1554e60b1a065d7e17449e2]
+2026-10-05 14:08:50.093 +05:30 [INF] [d7f9e7883af24034836cb18eda7dd011] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:08:50.093 +05:30 [INF] [d7f9e7883af24034836cb18eda7dd011] HTTP POST /api/auth/login responded 200 in 9ms [Trace: d7f9e7883af24034836cb18eda7dd011]
+2026-10-05 14:08:50.147 +05:30 [INF] [7422b259235249e3bf57a82f2e3e0e4d] LEAVE_APPLIED. LeaveId: 1, EmployeeId: 4
+2026-10-05 14:08:50.149 +05:30 [INF] [7422b259235249e3bf57a82f2e3e0e4d] HTTP POST /api/leaves responded 201 in 54ms [Trace: 7422b259235249e3bf57a82f2e3e0e4d]
+2026-10-05 14:08:50.177 +05:30 [INF] [4150286df6564c1e8e59928744bbfa36] HTTP GET /api/leaves responded 200 in 26ms [Trace: 4150286df6564c1e8e59928744bbfa36]
+2026-10-05 14:08:50.189 +05:30 [INF] [46a135c2c29e4fcd9ee7db49a213fb0b] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:08:50.189 +05:30 [INF] [46a135c2c29e4fcd9ee7db49a213fb0b] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 46a135c2c29e4fcd9ee7db49a213fb0b]
+2026-10-05 14:08:50.234 +05:30 [INF] [7346cb18f7864c398970382f6d0f1823] EMPLOYEE_CREATED. EmployeeId: 5, CreatedBy: 1
+2026-10-05 14:08:50.237 +05:30 [INF] [7346cb18f7864c398970382f6d0f1823] HTTP POST /api/employees responded 201 in 45ms [Trace: 7346cb18f7864c398970382f6d0f1823]
+2026-10-05 14:08:50.241 +05:30 [INF] [488fc6f4d1ae4055830c4c916295cb10] HTTP GET /api/employees/5 responded 200 in 2ms [Trace: 488fc6f4d1ae4055830c4c916295cb10]
+2026-10-05 14:08:50.253 +05:30 [INF] [348e565a1e2f464eb62c41cf5aa84644] HTTP GET /api/employees/5/salary responded 200 in 11ms [Trace: 348e565a1e2f464eb62c41cf5aa84644]
+2026-10-05 14:08:50.273 +05:30 [INF] [c1ff32a814c64b8fa573fde91c675d48] PAYSLIP_GENERATED. EmployeeId: 5, Month: 9, Year: 2026
+2026-10-05 14:08:50.274 +05:30 [INF] [c1ff32a814c64b8fa573fde91c675d48] HTTP POST /api/employees/5/payslips/generate responded 201 in 19ms [Trace: c1ff32a814c64b8fa573fde91c675d48]
+2026-10-05 14:08:50.276 +05:30 [INF] [8e81ce757a2c4890961ef2f720ac74e9] HTTP GET /api/employees responded 401 in 1ms [Trace: 8e81ce757a2c4890961ef2f720ac74e9]
+2026-10-05 14:08:50.287 +05:30 [INF] [97f7041c3c0e4c15b0d0eed9a189942b] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:08:50.287 +05:30 [INF] [97f7041c3c0e4c15b0d0eed9a189942b] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 97f7041c3c0e4c15b0d0eed9a189942b]
+2026-10-05 14:10:19.523 +05:30 [INF] [82035c764d1646c0b08e789a9ec504db] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:10:19.546 +05:30 [INF] [82035c764d1646c0b08e789a9ec504db] HTTP POST /api/auth/login responded 200 in 159ms [Trace: 82035c764d1646c0b08e789a9ec504db]
+2026-10-05 14:10:19.599 +05:30 [INF] [20a3ca3114c44cfc983948122918a4ca] HTTP GET /api/attendance responded 200 in 46ms [Trace: 20a3ca3114c44cfc983948122918a4ca]
+2026-10-05 14:10:19.606 +05:30 [INF] [89a5b29e5c3b4ea89157160ada264a66] HTTP GET /api/attendance responded 403 in 3ms [Trace: 89a5b29e5c3b4ea89157160ada264a66]
+2026-10-05 14:10:19.626 +05:30 [INF] [a910661a6d394dd0be1f24df4aa64136] CHECK_IN. EmployeeId: 4, Status: "Present"
+2026-10-05 14:10:19.627 +05:30 [INF] [a910661a6d394dd0be1f24df4aa64136] HTTP POST /api/attendance/check-in responded 200 in 19ms [Trace: a910661a6d394dd0be1f24df4aa64136]
+2026-10-05 14:10:19.640 +05:30 [WRN] [f2ba8aaeb0bd4f41818a55b726b0f1ae] LOGIN_FAILED. Incorrect password for user: admin@company.com, count: 1
+2026-10-05 14:10:19.656 +05:30 [INF] [160f4309ed7a4073ac03d5c84709f391] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:10:19.657 +05:30 [INF] [160f4309ed7a4073ac03d5c84709f391] HTTP POST /api/auth/login responded 200 in 10ms [Trace: 160f4309ed7a4073ac03d5c84709f391]
+2026-10-05 14:10:19.668 +05:30 [INF] [4b0ba53cb5b4415380a2aba7351918cb] HTTP GET /api/attendance responded 200 in 10ms [Trace: 4b0ba53cb5b4415380a2aba7351918cb]
+2026-10-05 14:10:19.679 +05:30 [INF] [f2760d4170954643a3b8005d6020cab7] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:10:19.680 +05:30 [INF] [f2760d4170954643a3b8005d6020cab7] HTTP POST /api/auth/login responded 200 in 9ms [Trace: f2760d4170954643a3b8005d6020cab7]
+2026-10-05 14:10:19.733 +05:30 [INF] [5e8cee2414fd44c6b3b1dae4fa200fce] LEAVE_APPLIED. LeaveId: 1, EmployeeId: 4
+2026-10-05 14:10:19.734 +05:30 [INF] [5e8cee2414fd44c6b3b1dae4fa200fce] HTTP POST /api/leaves responded 201 in 53ms [Trace: 5e8cee2414fd44c6b3b1dae4fa200fce]
+2026-10-05 14:10:19.762 +05:30 [INF] [f3c9fce7f1a54e5d8d5fcf2b71ddef16] HTTP PUT /api/leaves/1/approve responded 403 in 26ms [Trace: f3c9fce7f1a54e5d8d5fcf2b71ddef16]
+2026-10-05 14:10:19.772 +05:30 [INF] [5229671000d54ad1a2927404db4c59cc] LOGIN_SUCCESS. User manager@company.com, EmployeeId: 3
+2026-10-05 14:10:19.772 +05:30 [INF] [5229671000d54ad1a2927404db4c59cc] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 5229671000d54ad1a2927404db4c59cc]
+2026-10-05 14:10:19.818 +05:30 [INF] [5cfd98ceb98d4c7db9491352a026ed45] LEAVE_STATUS_CHANGED. LeaveId: 1, Status: "Approved", By: 3
+2026-10-05 14:10:19.819 +05:30 [INF] [5cfd98ceb98d4c7db9491352a026ed45] HTTP PUT /api/leaves/1/approve responded 200 in 46ms [Trace: 5cfd98ceb98d4c7db9491352a026ed45]
+2026-10-05 14:10:19.821 +05:30 [INF] [80169527cc574910a740766d4274c558] LEAVE_APPLIED. LeaveId: 2, EmployeeId: 4
+2026-10-05 14:10:19.821 +05:30 [INF] [80169527cc574910a740766d4274c558] HTTP POST /api/leaves responded 201 in 2ms [Trace: 80169527cc574910a740766d4274c558]
+2026-10-05 14:10:19.830 +05:30 [INF] [d89b115aa0b244a4b0140e5a60ac2bce] LOGIN_SUCCESS. User hr@company.com, EmployeeId: 2
+2026-10-05 14:10:19.830 +05:30 [INF] [d89b115aa0b244a4b0140e5a60ac2bce] HTTP POST /api/auth/login responded 200 in 8ms [Trace: d89b115aa0b244a4b0140e5a60ac2bce]
+2026-10-05 14:10:19.832 +05:30 [INF] [c269ae3dfe26465b8d0080e446f7d8a4] LEAVE_STATUS_CHANGED. LeaveId: 2, Status: "Approved", By: 2
+2026-10-05 14:10:19.833 +05:30 [INF] [c269ae3dfe26465b8d0080e446f7d8a4] HTTP PUT /api/leaves/2/approve responded 200 in 1ms [Trace: c269ae3dfe26465b8d0080e446f7d8a4]
+2026-10-05 14:10:19.843 +05:30 [INF] [29cec9508a7a49c49f4a539c0c48913a] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:10:19.843 +05:30 [INF] [29cec9508a7a49c49f4a539c0c48913a] HTTP POST /api/auth/login responded 200 in 8ms [Trace: 29cec9508a7a49c49f4a539c0c48913a]
+2026-10-05 14:10:19.844 +05:30 [INF] [20d0af8f6c814a3bad7f297b6957a417] LEAVE_APPLIED. LeaveId: 3, EmployeeId: 4
+2026-10-05 14:10:19.844 +05:30 [INF] [20d0af8f6c814a3bad7f297b6957a417] HTTP POST /api/leaves responded 201 in 1ms [Trace: 20d0af8f6c814a3bad7f297b6957a417]
+2026-10-05 14:10:19.872 +05:30 [INF] [fbd9e493e13745ecb29c90a94be18f9c] HTTP GET /api/leaves responded 200 in 26ms [Trace: fbd9e493e13745ecb29c90a94be18f9c]
+2026-10-05 14:10:19.883 +05:30 [INF] [e50187b8adc8422d92ee7e9c2072bed2] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:10:19.884 +05:30 [INF] [e50187b8adc8422d92ee7e9c2072bed2] HTTP POST /api/auth/login responded 200 in 9ms [Trace: e50187b8adc8422d92ee7e9c2072bed2]
+2026-10-05 14:10:19.937 +05:30 [INF] [dcb0297354264f89a557e7ad8056afac] EMPLOYEE_CREATED. EmployeeId: 5, CreatedBy: 1
+2026-10-05 14:10:19.939 +05:30 [INF] [dcb0297354264f89a557e7ad8056afac] HTTP POST /api/employees responded 201 in 52ms [Trace: dcb0297354264f89a557e7ad8056afac]
+2026-10-05 14:10:19.943 +05:30 [INF] [55f47bd222384462be43a987419d00d1] HTTP GET /api/employees/5 responded 200 in 2ms [Trace: 55f47bd222384462be43a987419d00d1]
+2026-10-05 14:10:19.954 +05:30 [INF] [304207b254d646098caf095ff843c256] HTTP GET /api/employees/5/salary responded 200 in 10ms [Trace: 304207b254d646098caf095ff843c256]
+2026-10-05 14:10:19.975 +05:30 [INF] [455bd8063ce84124ac01ecceeff058bd] PAYSLIP_GENERATED. EmployeeId: 5, Month: 9, Year: 2026
+2026-10-05 14:10:19.976 +05:30 [INF] [455bd8063ce84124ac01ecceeff058bd] HTTP POST /api/employees/5/payslips/generate responded 201 in 20ms [Trace: 455bd8063ce84124ac01ecceeff058bd]
+2026-10-05 14:10:19.978 +05:30 [INF] [cc7342386202496eb0657f1ce02d47f0] HTTP GET /api/employees responded 401 in 1ms [Trace: cc7342386202496eb0657f1ce02d47f0]
+2026-10-05 14:10:19.989 +05:30 [INF] [e5df490da6ad46d9b071429f535aa59c] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:10:19.989 +05:30 [INF] [e5df490da6ad46d9b071429f535aa59c] HTTP POST /api/auth/login responded 200 in 9ms [Trace: e5df490da6ad46d9b071429f535aa59c]
+2026-10-05 14:18:42.118 +05:30 [INF] [2d566936e52942c98c3dacf28e1cf5a1] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:18:42.144 +05:30 [INF] [2d566936e52942c98c3dacf28e1cf5a1] HTTP POST /api/auth/login responded 200 in 170ms [Trace: 2d566936e52942c98c3dacf28e1cf5a1]
+2026-10-05 14:18:42.200 +05:30 [INF] [17763aeba3424876ad901dcb4aacf8da] HTTP GET /api/attendance responded 200 in 49ms [Trace: 17763aeba3424876ad901dcb4aacf8da]
+2026-10-05 14:18:42.208 +05:30 [INF] [9d2e79170c62451694f7c2666dbaec80] HTTP GET /api/attendance responded 403 in 3ms [Trace: 9d2e79170c62451694f7c2666dbaec80]
+2026-10-05 14:18:42.230 +05:30 [INF] [b5d499a69b6b4cc592c11f731551984c] CHECK_IN. EmployeeId: 4, Status: "Present"
+2026-10-05 14:18:42.230 +05:30 [INF] [b5d499a69b6b4cc592c11f731551984c] HTTP POST /api/attendance/check-in responded 200 in 21ms [Trace: b5d499a69b6b4cc592c11f731551984c]
+2026-10-05 14:18:42.246 +05:30 [INF] [84984aca1bf545f4afc54b6e01737e2d] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:18:42.246 +05:30 [INF] [84984aca1bf545f4afc54b6e01737e2d] HTTP POST /api/auth/login responded 200 in 10ms [Trace: 84984aca1bf545f4afc54b6e01737e2d]
+2026-10-05 14:18:42.311 +05:30 [INF] [2aadcc28d7614983985d9dc22cce1ca2] HTTP GET /api/leaves/balances responded 200 in 63ms [Trace: 2aadcc28d7614983985d9dc22cce1ca2]
+2026-10-05 14:18:42.335 +05:30 [INF] [1221b9115e6245e5beb745262709da01] LEAVE_APPLIED. LeaveId: 1, EmployeeId: 4, AvailableRemaining: 15
+2026-10-05 14:18:42.336 +05:30 [INF] [1221b9115e6245e5beb745262709da01] HTTP POST /api/leaves responded 201 in 22ms [Trace: 1221b9115e6245e5beb745262709da01]
+2026-10-05 14:18:42.348 +05:30 [INF] [64136baa252049b489e228e0ef7db56e] LOGIN_SUCCESS. User manager@company.com, EmployeeId: 3
+2026-10-05 14:18:42.348 +05:30 [INF] [64136baa252049b489e228e0ef7db56e] HTTP POST /api/auth/login responded 200 in 10ms [Trace: 64136baa252049b489e228e0ef7db56e]
+2026-10-05 14:18:42.349 +05:30 [INF] [c2cef76611e94ef799adc3451db0d824] HTTP GET /api/leaves/pending-approvals responded 403 in 0ms [Trace: c2cef76611e94ef799adc3451db0d824]
+2026-10-05 14:18:42.375 +05:30 [WRN] [5d8d155c2dc646c8b3878af82af57bba] LOGIN_FAILED. Incorrect password for user: admin@company.com, count: 1
+2026-10-05 14:18:42.390 +05:30 [INF] [c098bc039c83421fae3c532590894301] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:18:42.391 +05:30 [INF] [c098bc039c83421fae3c532590894301] HTTP POST /api/auth/login responded 200 in 9ms [Trace: c098bc039c83421fae3c532590894301]
+2026-10-05 14:18:42.402 +05:30 [INF] [8f71a7cea67147f5838efbdee64c61aa] HTTP GET /api/attendance responded 200 in 10ms [Trace: 8f71a7cea67147f5838efbdee64c61aa]
+2026-10-05 14:18:42.413 +05:30 [INF] [83fad994556f475aa954ce97fd25d83a] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:18:42.414 +05:30 [INF] [83fad994556f475aa954ce97fd25d83a] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 83fad994556f475aa954ce97fd25d83a]
+2026-10-05 14:18:42.416 +05:30 [INF] [4ba787f1116b4aec88951d21c04db82e] LEAVE_APPLIED. LeaveId: 2, EmployeeId: 4, AvailableRemaining: 12
+2026-10-05 14:18:42.417 +05:30 [INF] [4ba787f1116b4aec88951d21c04db82e] HTTP POST /api/leaves responded 201 in 2ms [Trace: 4ba787f1116b4aec88951d21c04db82e]
+2026-10-05 14:18:42.444 +05:30 [INF] [8a252ddda18f411eb86d7e69d102d47e] HTTP PUT /api/leaves/2/approve responded 403 in 27ms [Trace: 8a252ddda18f411eb86d7e69d102d47e]
+2026-10-05 14:18:42.454 +05:30 [INF] [336c0926a1ec4337bb4bcba9670a4876] LOGIN_SUCCESS. User manager@company.com, EmployeeId: 3
+2026-10-05 14:18:42.454 +05:30 [INF] [336c0926a1ec4337bb4bcba9670a4876] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 336c0926a1ec4337bb4bcba9670a4876]
+2026-10-05 14:18:42.503 +05:30 [INF] [adefa8c8d05c490282aa953d9b38c2c5] LEAVE_STATUS_CHANGED. LeaveId: 2, Status: "Approved", By: 3
+2026-10-05 14:18:42.503 +05:30 [INF] [adefa8c8d05c490282aa953d9b38c2c5] HTTP PUT /api/leaves/2/approve responded 200 in 48ms [Trace: adefa8c8d05c490282aa953d9b38c2c5]
+2026-10-05 14:18:42.505 +05:30 [INF] [e36301a9467b44378d6633835ce0daf0] LEAVE_APPLIED. LeaveId: 3, EmployeeId: 4, AvailableRemaining: 10
+2026-10-05 14:18:42.505 +05:30 [INF] [e36301a9467b44378d6633835ce0daf0] HTTP POST /api/leaves responded 201 in 1ms [Trace: e36301a9467b44378d6633835ce0daf0]
+2026-10-05 14:18:42.514 +05:30 [INF] [58444080dbde4e6f8cc6da69767c4827] LOGIN_SUCCESS. User hr@company.com, EmployeeId: 2
+2026-10-05 14:18:42.514 +05:30 [INF] [58444080dbde4e6f8cc6da69767c4827] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 58444080dbde4e6f8cc6da69767c4827]
+2026-10-05 14:18:42.516 +05:30 [INF] [2a5ef694183e48039ce6088375d6df95] LEAVE_STATUS_CHANGED. LeaveId: 3, Status: "Approved", By: 2
+2026-10-05 14:18:42.516 +05:30 [INF] [2a5ef694183e48039ce6088375d6df95] HTTP PUT /api/leaves/3/approve responded 200 in 1ms [Trace: 2a5ef694183e48039ce6088375d6df95]
+2026-10-05 14:18:42.527 +05:30 [INF] [f79b6e21243c48cfa99a0489a0939c79] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:18:42.527 +05:30 [INF] [f79b6e21243c48cfa99a0489a0939c79] HTTP POST /api/auth/login responded 200 in 9ms [Trace: f79b6e21243c48cfa99a0489a0939c79]
+2026-10-05 14:18:42.538 +05:30 [INF] [638106abcf6240ecaea95aae358190c7] LEAVE_APPLIED. LeaveId: 4, EmployeeId: 4, AvailableRemaining: 10
+2026-10-05 14:18:42.538 +05:30 [INF] [638106abcf6240ecaea95aae358190c7] HTTP POST /api/leaves responded 201 in 1ms [Trace: 638106abcf6240ecaea95aae358190c7]
+2026-10-05 14:18:42.543 +05:30 [INF] [e5a57d23d27340f0b93945035611c953] HTTP GET /api/leaves responded 200 in 4ms [Trace: e5a57d23d27340f0b93945035611c953]
+2026-10-05 14:18:42.555 +05:30 [INF] [fea22587f5f5485faf6fd9d97cc3d526] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:18:42.555 +05:30 [INF] [fea22587f5f5485faf6fd9d97cc3d526] HTTP POST /api/auth/login responded 200 in 9ms [Trace: fea22587f5f5485faf6fd9d97cc3d526]
+2026-10-05 14:18:42.598 +05:30 [INF] [822c645f309d45b2bc15bc7efbfff8ce] EMPLOYEE_CREATED. EmployeeId: 5, CreatedBy: 1
+2026-10-05 14:18:42.600 +05:30 [INF] [822c645f309d45b2bc15bc7efbfff8ce] HTTP POST /api/employees responded 201 in 43ms [Trace: 822c645f309d45b2bc15bc7efbfff8ce]
+2026-10-05 14:18:42.604 +05:30 [INF] [76342a4f1e9a4cd2aaab4bc34395ed60] HTTP GET /api/employees/5 responded 200 in 2ms [Trace: 76342a4f1e9a4cd2aaab4bc34395ed60]
+2026-10-05 14:18:42.616 +05:30 [INF] [6425396b798d4028bc0c53dc26d5956d] HTTP GET /api/employees/5/salary responded 200 in 11ms [Trace: 6425396b798d4028bc0c53dc26d5956d]
+2026-10-05 14:18:42.637 +05:30 [INF] [08d1febcca0142ae9f975d4f958e0df9] PAYSLIP_GENERATED. EmployeeId: 5, Month: 9, Year: 2026
+2026-10-05 14:18:42.639 +05:30 [INF] [08d1febcca0142ae9f975d4f958e0df9] HTTP POST /api/employees/5/payslips/generate responded 201 in 21ms [Trace: 08d1febcca0142ae9f975d4f958e0df9]
+2026-10-05 14:18:42.641 +05:30 [INF] [ace62e1df7844e14a6bc46006904e89b] HTTP GET /api/employees responded 401 in 1ms [Trace: ace62e1df7844e14a6bc46006904e89b]
+2026-10-05 14:18:42.652 +05:30 [INF] [48cb82fcc7354951842b0e4ce0b6862e] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:18:42.652 +05:30 [INF] [48cb82fcc7354951842b0e4ce0b6862e] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 48cb82fcc7354951842b0e4ce0b6862e]
+2026-10-05 14:19:04.964 +05:30 [INF] [7ae7ab84998b4a6695bdb7ebb48846e3] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:19:04.990 +05:30 [INF] [7ae7ab84998b4a6695bdb7ebb48846e3] HTTP POST /api/auth/login responded 200 in 166ms [Trace: 7ae7ab84998b4a6695bdb7ebb48846e3]
+2026-10-05 14:19:05.048 +05:30 [INF] [0409edd7cf094281bd74faa6d3016fc1] HTTP GET /api/attendance responded 200 in 51ms [Trace: 0409edd7cf094281bd74faa6d3016fc1]
+2026-10-05 14:19:05.056 +05:30 [INF] [ca0c203ab3124c8a88a686e67f4bca79] HTTP GET /api/attendance responded 403 in 4ms [Trace: ca0c203ab3124c8a88a686e67f4bca79]
+2026-10-05 14:19:05.078 +05:30 [INF] [4a8e1b96a2ab44709a57fac76ebe4b80] CHECK_IN. EmployeeId: 4, Status: "Present"
+2026-10-05 14:19:05.079 +05:30 [INF] [4a8e1b96a2ab44709a57fac76ebe4b80] HTTP POST /api/attendance/check-in responded 200 in 21ms [Trace: 4a8e1b96a2ab44709a57fac76ebe4b80]
+2026-10-05 14:19:05.094 +05:30 [INF] [faf9a1ef739640fa84dd28c2015e5409] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:19:05.095 +05:30 [INF] [faf9a1ef739640fa84dd28c2015e5409] HTTP POST /api/auth/login responded 200 in 10ms [Trace: faf9a1ef739640fa84dd28c2015e5409]
+2026-10-05 14:19:05.157 +05:30 [INF] [902bc060b001411b98c9699b2fd6e82f] HTTP GET /api/leaves/balances responded 200 in 62ms [Trace: 902bc060b001411b98c9699b2fd6e82f]
+2026-10-05 14:19:05.181 +05:30 [INF] [71a5168516e14b4cab0707f10b01e7c1] LEAVE_APPLIED. LeaveId: 1, EmployeeId: 4, AvailableRemaining: 15
+2026-10-05 14:19:05.183 +05:30 [INF] [71a5168516e14b4cab0707f10b01e7c1] HTTP POST /api/leaves responded 201 in 22ms [Trace: 71a5168516e14b4cab0707f10b01e7c1]
+2026-10-05 14:19:05.194 +05:30 [INF] [9cd1dab7a30e414eb0a9849ae96fc414] LOGIN_SUCCESS. User manager@company.com, EmployeeId: 3
+2026-10-05 14:19:05.195 +05:30 [INF] [9cd1dab7a30e414eb0a9849ae96fc414] HTTP POST /api/auth/login responded 200 in 10ms [Trace: 9cd1dab7a30e414eb0a9849ae96fc414]
+2026-10-05 14:19:05.223 +05:30 [INF] [26f6705bd028446d82d1f593c5a7b01f] HTTP GET /api/leaves/pending-approvals responded 200 in 27ms [Trace: 26f6705bd028446d82d1f593c5a7b01f]
+2026-10-05 14:19:05.299 +05:30 [INF] [7061abc5c5ba4bfeb5223164426d8d53] LEAVE_STATUS_CHANGED. LeaveId: 1, Status: "Approved", By: 3
+2026-10-05 14:19:05.300 +05:30 [INF] [7061abc5c5ba4bfeb5223164426d8d53] HTTP PUT /api/leaves/1/approve responded 200 in 74ms [Trace: 7061abc5c5ba4bfeb5223164426d8d53]
+2026-10-05 14:19:05.301 +05:30 [INF] [36dc4f04f0374f2388a13ae8f80ebd65] HTTP GET /api/leaves/pending-approvals responded 200 in 0ms [Trace: 36dc4f04f0374f2388a13ae8f80ebd65]
+2026-10-05 14:19:05.311 +05:30 [WRN] [941abb73bb9e4d14a736ee7294b6de43] LOGIN_FAILED. Incorrect password for user: admin@company.com, count: 1
+2026-10-05 14:19:05.325 +05:30 [INF] [898c555a4f9d4a9289f36ca045b9a795] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:19:05.325 +05:30 [INF] [898c555a4f9d4a9289f36ca045b9a795] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 898c555a4f9d4a9289f36ca045b9a795]
+2026-10-05 14:19:05.337 +05:30 [INF] [1da79fd08b5242fb90bfd09aea9b26b7] HTTP GET /api/attendance responded 200 in 10ms [Trace: 1da79fd08b5242fb90bfd09aea9b26b7]
+2026-10-05 14:19:05.349 +05:30 [INF] [25a4114e07a8407aa866f0c9860d1c74] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:19:05.349 +05:30 [INF] [25a4114e07a8407aa866f0c9860d1c74] HTTP POST /api/auth/login responded 200 in 8ms [Trace: 25a4114e07a8407aa866f0c9860d1c74]
+2026-10-05 14:19:05.351 +05:30 [INF] [f00ab547616f490b8bb28b4f0a8edaca] LEAVE_APPLIED. LeaveId: 2, EmployeeId: 4, AvailableRemaining: 12
+2026-10-05 14:19:05.351 +05:30 [INF] [f00ab547616f490b8bb28b4f0a8edaca] HTTP POST /api/leaves responded 201 in 1ms [Trace: f00ab547616f490b8bb28b4f0a8edaca]
+2026-10-05 14:19:05.352 +05:30 [INF] [92ee0fe5a1d0461086a47159710f8948] HTTP PUT /api/leaves/2/approve responded 403 in 0ms [Trace: 92ee0fe5a1d0461086a47159710f8948]
+2026-10-05 14:19:05.361 +05:30 [INF] [baa02f0d56e3479e833d2054411f713e] LOGIN_SUCCESS. User manager@company.com, EmployeeId: 3
+2026-10-05 14:19:05.361 +05:30 [INF] [baa02f0d56e3479e833d2054411f713e] HTTP POST /api/auth/login responded 200 in 9ms [Trace: baa02f0d56e3479e833d2054411f713e]
+2026-10-05 14:19:05.363 +05:30 [INF] [55bd85f64ab44f59ab454b113d700bd8] LEAVE_STATUS_CHANGED. LeaveId: 2, Status: "Approved", By: 3
+2026-10-05 14:19:05.363 +05:30 [INF] [55bd85f64ab44f59ab454b113d700bd8] HTTP PUT /api/leaves/2/approve responded 200 in 2ms [Trace: 55bd85f64ab44f59ab454b113d700bd8]
+2026-10-05 14:19:05.365 +05:30 [INF] [3e256c7bd67e4e11b65208ed584b09cc] LEAVE_APPLIED. LeaveId: 3, EmployeeId: 4, AvailableRemaining: 10
+2026-10-05 14:19:05.365 +05:30 [INF] [3e256c7bd67e4e11b65208ed584b09cc] HTTP POST /api/leaves responded 201 in 1ms [Trace: 3e256c7bd67e4e11b65208ed584b09cc]
+2026-10-05 14:19:05.374 +05:30 [INF] [bc5b77dc96e14f4099e1c2e2a57ba9ec] LOGIN_SUCCESS. User hr@company.com, EmployeeId: 2
+2026-10-05 14:19:05.374 +05:30 [INF] [bc5b77dc96e14f4099e1c2e2a57ba9ec] HTTP POST /api/auth/login responded 200 in 8ms [Trace: bc5b77dc96e14f4099e1c2e2a57ba9ec]
+2026-10-05 14:19:05.385 +05:30 [INF] [1bd517c052b24626a55992e643312ee2] LEAVE_STATUS_CHANGED. LeaveId: 3, Status: "Approved", By: 2
+2026-10-05 14:19:05.385 +05:30 [INF] [1bd517c052b24626a55992e643312ee2] HTTP PUT /api/leaves/3/approve responded 200 in 10ms [Trace: 1bd517c052b24626a55992e643312ee2]
+2026-10-05 14:19:05.396 +05:30 [INF] [fe96cd7619b949058c04ab1526165dbe] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:19:05.396 +05:30 [INF] [fe96cd7619b949058c04ab1526165dbe] HTTP POST /api/auth/login responded 200 in 8ms [Trace: fe96cd7619b949058c04ab1526165dbe]
+2026-10-05 14:19:05.398 +05:30 [INF] [f9c02d3fefda4e2fb82f9f191f7cc26f] LEAVE_APPLIED. LeaveId: 4, EmployeeId: 4, AvailableRemaining: 10
+2026-10-05 14:19:05.398 +05:30 [INF] [f9c02d3fefda4e2fb82f9f191f7cc26f] HTTP POST /api/leaves responded 201 in 1ms [Trace: f9c02d3fefda4e2fb82f9f191f7cc26f]
+2026-10-05 14:19:05.401 +05:30 [INF] [382e459c67d6403197d367a55ff67d2f] HTTP GET /api/leaves responded 200 in 3ms [Trace: 382e459c67d6403197d367a55ff67d2f]
+2026-10-05 14:19:05.412 +05:30 [INF] [0ada2e8ba2fb42089424acb74f1be9cc] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:19:05.413 +05:30 [INF] [0ada2e8ba2fb42089424acb74f1be9cc] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 0ada2e8ba2fb42089424acb74f1be9cc]
+2026-10-05 14:19:05.456 +05:30 [INF] [9a7f3577817940b4a29b624dabdd8cd7] EMPLOYEE_CREATED. EmployeeId: 5, CreatedBy: 1
+2026-10-05 14:19:05.458 +05:30 [INF] [9a7f3577817940b4a29b624dabdd8cd7] HTTP POST /api/employees responded 201 in 43ms [Trace: 9a7f3577817940b4a29b624dabdd8cd7]
+2026-10-05 14:19:05.462 +05:30 [INF] [f793b8d22dd84a1bad25ea27efe4a38b] HTTP GET /api/employees/5 responded 200 in 2ms [Trace: f793b8d22dd84a1bad25ea27efe4a38b]
+2026-10-05 14:19:05.474 +05:30 [INF] [35dd3844d7054027966d68c8f5b4e02d] HTTP GET /api/employees/5/salary responded 200 in 11ms [Trace: 35dd3844d7054027966d68c8f5b4e02d]
+2026-10-05 14:19:05.494 +05:30 [INF] [c0bff1bbe3064044af7d2405bd50c6dc] PAYSLIP_GENERATED. EmployeeId: 5, Month: 9, Year: 2026
+2026-10-05 14:19:05.495 +05:30 [INF] [c0bff1bbe3064044af7d2405bd50c6dc] HTTP POST /api/employees/5/payslips/generate responded 201 in 21ms [Trace: c0bff1bbe3064044af7d2405bd50c6dc]
+2026-10-05 14:19:05.498 +05:30 [INF] [3409c3694f33477a9b342f2c350a82f7] HTTP GET /api/employees responded 401 in 1ms [Trace: 3409c3694f33477a9b342f2c350a82f7]
+2026-10-05 14:19:05.508 +05:30 [INF] [5b74107a747b476581e62ce6d2879084] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:19:05.509 +05:30 [INF] [5b74107a747b476581e62ce6d2879084] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 5b74107a747b476581e62ce6d2879084]
+2026-10-05 14:28:17.658 +05:30 [INF] [1875e5e135854238b1e7391668203870] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:28:17.684 +05:30 [INF] [1875e5e135854238b1e7391668203870] HTTP POST /api/auth/login responded 200 in 180ms [Trace: 1875e5e135854238b1e7391668203870]
+2026-10-05 14:28:17.741 +05:30 [INF] [a76ec71575c549e29abaa2fd398a6763] HTTP GET /api/attendance responded 200 in 50ms [Trace: a76ec71575c549e29abaa2fd398a6763]
+2026-10-05 14:28:17.749 +05:30 [INF] [5e5e6bebbd0c4d1a9319ba57379c3f5c] HTTP GET /api/attendance responded 403 in 4ms [Trace: 5e5e6bebbd0c4d1a9319ba57379c3f5c]
+2026-10-05 14:28:17.772 +05:30 [INF] [3ff7b5e4dfff44b7bf427e7f15f45ba7] CHECK_IN. EmployeeId: 4, Status: "Present"
+2026-10-05 14:28:17.773 +05:30 [INF] [3ff7b5e4dfff44b7bf427e7f15f45ba7] HTTP POST /api/attendance/check-in responded 200 in 22ms [Trace: 3ff7b5e4dfff44b7bf427e7f15f45ba7]
+2026-10-05 14:28:17.790 +05:30 [INF] [3f8384f31c2c4fdf8b22700f19da1a45] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:28:17.791 +05:30 [INF] [3f8384f31c2c4fdf8b22700f19da1a45] HTTP POST /api/auth/login responded 200 in 11ms [Trace: 3f8384f31c2c4fdf8b22700f19da1a45]
+2026-10-05 14:28:17.854 +05:30 [INF] [6c202103b48b45cf920fe27bd92ecac8] HTTP GET /api/leaves/balances responded 200 in 62ms [Trace: 6c202103b48b45cf920fe27bd92ecac8]
+2026-10-05 14:28:17.877 +05:30 [INF] [a7663a4c1496437ca1710a2f495191aa] LEAVE_APPLIED. LeaveId: 1, EmployeeId: 4, AvailableRemaining: 15
+2026-10-05 14:28:17.879 +05:30 [INF] [a7663a4c1496437ca1710a2f495191aa] HTTP POST /api/leaves responded 201 in 22ms [Trace: a7663a4c1496437ca1710a2f495191aa]
+2026-10-05 14:28:17.891 +05:30 [INF] [d6ab6afa916c4b19b4d52ee520384174] LOGIN_SUCCESS. User manager@company.com, EmployeeId: 3
+2026-10-05 14:28:17.891 +05:30 [INF] [d6ab6afa916c4b19b4d52ee520384174] HTTP POST /api/auth/login responded 200 in 10ms [Trace: d6ab6afa916c4b19b4d52ee520384174]
+2026-10-05 14:28:17.920 +05:30 [INF] [59c01feb2cf94e1981ba69c331d42672] HTTP GET /api/leaves/pending-approvals responded 200 in 28ms [Trace: 59c01feb2cf94e1981ba69c331d42672]
+2026-10-05 14:28:17.999 +05:30 [INF] [d9357335d6ba412aacae5c497f5df802] LEAVE_STATUS_CHANGED. LeaveId: 1, Status: "Approved", By: 3
+2026-10-05 14:28:17.999 +05:30 [INF] [d9357335d6ba412aacae5c497f5df802] HTTP PUT /api/leaves/1/approve responded 200 in 76ms [Trace: d9357335d6ba412aacae5c497f5df802]
+2026-10-05 14:28:18.000 +05:30 [INF] [6332e51e3be54dbc8cf1ff8ec0d4781b] HTTP GET /api/leaves/pending-approvals responded 200 in 0ms [Trace: 6332e51e3be54dbc8cf1ff8ec0d4781b]
+2026-10-05 14:28:18.011 +05:30 [WRN] [b30355a421ae4db281a5ad0a6a67ea35] LOGIN_FAILED. Incorrect password for user: admin@company.com, count: 1
+2026-10-05 14:28:18.026 +05:30 [INF] [3aff6a6b1b074f8c8ee028b1de7db892] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:28:18.026 +05:30 [INF] [3aff6a6b1b074f8c8ee028b1de7db892] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 3aff6a6b1b074f8c8ee028b1de7db892]
+2026-10-05 14:28:18.038 +05:30 [INF] [ed42adf8897d4ea08c5a997e04206c13] HTTP GET /api/attendance responded 200 in 11ms [Trace: ed42adf8897d4ea08c5a997e04206c13]
+2026-10-05 14:28:18.050 +05:30 [INF] [402626f662504372a7c4160395813d52] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:28:18.050 +05:30 [INF] [402626f662504372a7c4160395813d52] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 402626f662504372a7c4160395813d52]
+2026-10-05 14:28:18.053 +05:30 [INF] [cecdfcc74ead454b90b5d63eecc036b4] LEAVE_APPLIED. LeaveId: 2, EmployeeId: 4, AvailableRemaining: 12
+2026-10-05 14:28:18.053 +05:30 [INF] [cecdfcc74ead454b90b5d63eecc036b4] HTTP POST /api/leaves responded 201 in 1ms [Trace: cecdfcc74ead454b90b5d63eecc036b4]
+2026-10-05 14:28:18.054 +05:30 [INF] [20c24806deb04bd189df3836e7cdd918] HTTP PUT /api/leaves/2/approve responded 403 in 0ms [Trace: 20c24806deb04bd189df3836e7cdd918]
+2026-10-05 14:28:18.064 +05:30 [INF] [4e6267feef35489880ee3f299ddef848] LOGIN_SUCCESS. User manager@company.com, EmployeeId: 3
+2026-10-05 14:28:18.064 +05:30 [INF] [4e6267feef35489880ee3f299ddef848] HTTP POST /api/auth/login responded 200 in 10ms [Trace: 4e6267feef35489880ee3f299ddef848]
+2026-10-05 14:28:18.067 +05:30 [INF] [1bd4290b12b548bf93f25ae14e62f9b1] LEAVE_STATUS_CHANGED. LeaveId: 2, Status: "Approved", By: 3
+2026-10-05 14:28:18.067 +05:30 [INF] [1bd4290b12b548bf93f25ae14e62f9b1] HTTP PUT /api/leaves/2/approve responded 200 in 2ms [Trace: 1bd4290b12b548bf93f25ae14e62f9b1]
+2026-10-05 14:28:18.069 +05:30 [INF] [d4672259f07843b88a292d61df829efb] LEAVE_APPLIED. LeaveId: 3, EmployeeId: 4, AvailableRemaining: 10
+2026-10-05 14:28:18.069 +05:30 [INF] [d4672259f07843b88a292d61df829efb] HTTP POST /api/leaves responded 201 in 1ms [Trace: d4672259f07843b88a292d61df829efb]
+2026-10-05 14:28:18.078 +05:30 [INF] [04ccae18879c4de4a2c0468aca0f5e26] LOGIN_SUCCESS. User hr@company.com, EmployeeId: 2
+2026-10-05 14:28:18.078 +05:30 [INF] [04ccae18879c4de4a2c0468aca0f5e26] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 04ccae18879c4de4a2c0468aca0f5e26]
+2026-10-05 14:28:18.089 +05:30 [INF] [0504b5826a494d70a5d01179dcb89df3] LEAVE_STATUS_CHANGED. LeaveId: 3, Status: "Approved", By: 2
+2026-10-05 14:28:18.089 +05:30 [INF] [0504b5826a494d70a5d01179dcb89df3] HTTP PUT /api/leaves/3/approve responded 200 in 10ms [Trace: 0504b5826a494d70a5d01179dcb89df3]
+2026-10-05 14:28:18.100 +05:30 [INF] [7f726fd309214306802313e90697f30e] LOGIN_SUCCESS. User employee@company.com, EmployeeId: 4
+2026-10-05 14:28:18.101 +05:30 [INF] [7f726fd309214306802313e90697f30e] HTTP POST /api/auth/login responded 200 in 9ms [Trace: 7f726fd309214306802313e90697f30e]
+2026-10-05 14:28:18.103 +05:30 [INF] [d58c04ffc35743388ff50daf5487b421] LEAVE_APPLIED. LeaveId: 4, EmployeeId: 4, AvailableRemaining: 10
+2026-10-05 14:28:18.103 +05:30 [INF] [d58c04ffc35743388ff50daf5487b421] HTTP POST /api/leaves responded 201 in 1ms [Trace: d58c04ffc35743388ff50daf5487b421]
+2026-10-05 14:28:18.107 +05:30 [INF] [f345b04de9df4188a27a6a9dd1b6b575] HTTP GET /api/leaves responded 200 in 3ms [Trace: f345b04de9df4188a27a6a9dd1b6b575]
+2026-10-05 14:28:18.118 +05:30 [INF] [e0df373ea6184517b5ac400eac16c009] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:28:18.119 +05:30 [INF] [e0df373ea6184517b5ac400eac16c009] HTTP POST /api/auth/login responded 200 in 9ms [Trace: e0df373ea6184517b5ac400eac16c009]
+2026-10-05 14:28:18.165 +05:30 [INF] [95daec98823e47369eef58202e12e5eb] EMPLOYEE_CREATED. EmployeeId: 5, CreatedBy: 1
+2026-10-05 14:28:18.167 +05:30 [INF] [95daec98823e47369eef58202e12e5eb] HTTP POST /api/employees responded 201 in 46ms [Trace: 95daec98823e47369eef58202e12e5eb]
+2026-10-05 14:28:18.171 +05:30 [INF] [fd36f440a6e24ca0b96c096812beff4c] HTTP GET /api/employees/5 responded 200 in 2ms [Trace: fd36f440a6e24ca0b96c096812beff4c]
+2026-10-05 14:28:18.183 +05:30 [INF] [13589dd742aa40f4815fd214b9d35896] HTTP GET /api/employees/5/salary responded 200 in 11ms [Trace: 13589dd742aa40f4815fd214b9d35896]
+2026-10-05 14:28:18.205 +05:30 [INF] [96a5e6ff6d454785ad8cb2791c848bc8] PAYSLIP_GENERATED. EmployeeId: 5, Month: 9, Year: 2026
+2026-10-05 14:28:18.206 +05:30 [INF] [96a5e6ff6d454785ad8cb2791c848bc8] HTTP POST /api/employees/5/payslips/generate responded 201 in 22ms [Trace: 96a5e6ff6d454785ad8cb2791c848bc8]
+2026-10-05 14:28:18.208 +05:30 [INF] [df67026711394daf9fd2abc06b0fc16a] HTTP GET /api/employees responded 401 in 1ms [Trace: df67026711394daf9fd2abc06b0fc16a]
+2026-10-05 14:28:18.219 +05:30 [INF] [f1340f31faa14e08b5cb82e5e26156ae] LOGIN_SUCCESS. User admin@company.com, EmployeeId: 1
+2026-10-05 14:28:18.220 +05:30 [INF] [f1340f31faa14e08b5cb82e5e26156ae] HTTP POST /api/auth/login responded 200 in 9ms [Trace: f1340f31faa14e08b5cb82e5e26156ae]

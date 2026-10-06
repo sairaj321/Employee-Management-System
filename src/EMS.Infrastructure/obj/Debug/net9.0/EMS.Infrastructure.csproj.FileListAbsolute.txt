@@ -17,3 +17,4 @@ C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Infrastructure\obj\Debu
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Infrastructure\obj\Debug\net9.0\EMS.Infrastructure.pdb
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Infrastructure\obj\Debug\net9.0\EMS.Infrastructure.genruntimeconfig.cache
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Infrastructure\obj\Debug\net9.0\ref\EMS.Infrastructure.dll
+C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Infrastructure\obj\Debug\net9.0\EMS.Infrastructure.sourcelink.json

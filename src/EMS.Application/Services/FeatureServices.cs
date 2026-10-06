@@ -151,6 +151,23 @@ public class LeaveService : ILeaveService
         if (leaveType == null)
             throw new NotFoundException(nameof(LeaveType), dto.LeaveTypeId);
 
+        // Calculate leave days requested
+        int requestedDays = (dto.EndDate.DayNumber - dto.StartDate.DayNumber) + 1;
+
+        // Calculate remaining available balance for the leave year
+        int leaveYear = dto.StartDate.Year;
+        var existingLeaves = await _uow.Leaves.GetLeavesAsync(employeeId, null, null, null, null, ct);
+        var yearLeaves = existingLeaves.Where(l => (l.StartDate.Year == leaveYear || l.EndDate.Year == leaveYear) && l.LeaveTypeId == dto.LeaveTypeId).ToList();
+
+        int usedDays = yearLeaves.Where(l => l.Status == LeaveStatus.Approved).Sum(l => (l.EndDate.DayNumber - l.StartDate.DayNumber) + 1);
+        int pendingDays = yearLeaves.Where(l => l.Status == LeaveStatus.Pending).Sum(l => (l.EndDate.DayNumber - l.StartDate.DayNumber) + 1);
+        int availableDays = Math.Max(0, leaveType.DefaultDaysPerYear - usedDays - pendingDays);
+
+        if (requestedDays > availableDays)
+        {
+            throw new ConflictException($"Insufficient leave balance for {leaveType.Name}. Available: {availableDays} days, Requested: {requestedDays} days.");
+        }
+
         var leave = new Leave
         {
             EmployeeId = employeeId,
@@ -179,8 +196,10 @@ public class LeaveService : ILeaveService
                 ct);
         }
 
-        _logger.LogInformation("LEAVE_APPLIED. LeaveId: {LeaveId}, EmployeeId: {EmployeeId}", leave.Id, employeeId);
-        return MapLeaveDto(leave);
+        _logger.LogInformation("LEAVE_APPLIED. LeaveId: {LeaveId}, EmployeeId: {EmployeeId}, AvailableRemaining: {Remaining}", leave.Id, employeeId, availableDays - requestedDays);
+        var resultDto = MapLeaveDto(leave);
+        resultDto.AvailableDaysRemaining = availableDays - requestedDays;
+        return resultDto;
     }
 
     public async Task<LeaveDto> ApproveAsync(int leaveId, ApproveLeaveDto dto, int actingUserId, CancellationToken ct = default)
@@ -189,7 +208,31 @@ public class LeaveService : ILeaveService
         if (leave == null)
             throw new NotFoundException(nameof(Leave), leaveId);
 
+        if (leave.Status == LeaveStatus.Cancelled)
+            throw new ConflictException("Cannot approve or reject a cancelled leave request.");
+
         var approverEmployee = await _uow.Employees.GetByUserIdAsync(actingUserId, ct);
+        var user = await _uow.Users.GetByIdAsync(actingUserId, ct);
+        var roles = user?.UserRoles.Select(ur => ur.Role.Name).ToList() ?? new List<string>();
+        var perms = user?.UserRoles.SelectMany(ur => ur.Role.RolePermissions).Select(rp => rp.Permission.Code).ToList() ?? new List<string>();
+
+        bool isHrOrAdmin = roles.Contains("Admin") || roles.Contains("HR") || roles.Contains("HR Manager") || perms.Contains("*") || perms.Contains("Leave.Approve");
+
+        var targetEmployee = leave.Employee ?? await _uow.Employees.GetByIdAsync(leave.EmployeeId, ct);
+
+        // Check if caller is the direct manager of the leave applicant
+        bool isManagerOfEmployee = approverEmployee != null && targetEmployee != null && targetEmployee.ManagerId == approverEmployee.Id;
+
+        // Prevent self-approval (e.g. manager approving their own leave) unless system Admin
+        if (approverEmployee != null && leave.EmployeeId == approverEmployee.Id && !roles.Contains("Admin"))
+        {
+            throw new ForbiddenException("Employees cannot approve or reject their own leave requests.");
+        }
+
+        if (!isHrOrAdmin && !isManagerOfEmployee)
+        {
+            throw new ForbiddenException("Only the employee's reporting manager or HR can approve or reject leave requests.");
+        }
 
         var oldStatus = leave.Status;
         leave.Status = dto.Approved ? LeaveStatus.Approved : LeaveStatus.Rejected;
@@ -204,10 +247,10 @@ public class LeaveService : ILeaveService
         await _uow.SaveChangesAsync(ct);
 
         // Notify employee
-        if (leave.Employee?.UserId != null)
+        if (targetEmployee?.UserId != null)
         {
             await _notificationService.NotifyAsync(
-                leave.Employee.UserId,
+                targetEmployee.UserId,
                 actionName,
                 $"Leave Application {leave.Status}",
                 $"Your leave request from {leave.StartDate:yyyy-MM-dd} to {leave.EndDate:yyyy-MM-dd} has been {leave.Status.ToString().ToLower()}.",
@@ -223,6 +266,17 @@ public class LeaveService : ILeaveService
         var leave = await _uow.Leaves.GetByIdAsync(leaveId, ct);
         if (leave == null)
             throw new NotFoundException(nameof(Leave), leaveId);
+
+        var callerEmployee = await _uow.Employees.GetByUserIdAsync(actingUserId, ct);
+        var user = await _uow.Users.GetByIdAsync(actingUserId, ct);
+        var roles = user?.UserRoles.Select(ur => ur.Role.Name).ToList() ?? new List<string>();
+        var perms = user?.UserRoles.SelectMany(ur => ur.Role.RolePermissions).Select(rp => rp.Permission.Code).ToList() ?? new List<string>();
+        bool isGlobalAdminOrHr = roles.Contains("Admin") || roles.Contains("HR") || roles.Contains("HR Manager") || perms.Contains("*") || perms.Contains("Leave.Approve");
+
+        if (!isGlobalAdminOrHr && (callerEmployee == null || leave.EmployeeId != callerEmployee.Id))
+        {
+            throw new ForbiddenException("You can only cancel your own leave requests.");
+        }
 
         if (leave.Status == LeaveStatus.Cancelled)
             throw new ConflictException("Leave is already cancelled.");
@@ -247,6 +301,45 @@ public class LeaveService : ILeaveService
     {
         var types = await _uow.Leaves.GetAllLeaveTypesAsync(ct);
         return types.Select(lt => new LeaveTypeDto { Id = lt.Id, Name = lt.Name, DefaultDaysPerYear = lt.DefaultDaysPerYear }).ToList();
+    }
+
+    public async Task<IReadOnlyList<LeaveBalanceDto>> GetLeaveBalancesAsync(int employeeId, int? year, CancellationToken ct = default)
+    {
+        var targetYear = year ?? DateTime.UtcNow.Year;
+        var employee = await _uow.Employees.GetByIdAsync(employeeId, ct);
+        if (employee == null)
+            throw new NotFoundException(nameof(Employee), employeeId);
+
+        var leaveTypes = await _uow.Leaves.GetAllLeaveTypesAsync(ct);
+        var leaves = await _uow.Leaves.GetLeavesAsync(employeeId, null, null, null, null, ct);
+
+        var yearLeaves = leaves.Where(l => l.StartDate.Year == targetYear || l.EndDate.Year == targetYear).ToList();
+
+        var balances = new List<LeaveBalanceDto>();
+        foreach (var lt in leaveTypes)
+        {
+            var usedDays = yearLeaves
+                .Where(l => l.LeaveTypeId == lt.Id && l.Status == LeaveStatus.Approved)
+                .Sum(l => (l.EndDate.DayNumber - l.StartDate.DayNumber) + 1);
+
+            var pendingDays = yearLeaves
+                .Where(l => l.LeaveTypeId == lt.Id && l.Status == LeaveStatus.Pending)
+                .Sum(l => (l.EndDate.DayNumber - l.StartDate.DayNumber) + 1);
+
+            balances.Add(new LeaveBalanceDto
+            {
+                EmployeeId = employeeId,
+                EmployeeName = $"{employee.FirstName} {employee.LastName}",
+                LeaveTypeId = lt.Id,
+                LeaveTypeName = lt.Name,
+                Year = targetYear,
+                TotalAllocatedDays = lt.DefaultDaysPerYear,
+                UsedDays = usedDays,
+                PendingDays = pendingDays
+            });
+        }
+
+        return balances;
     }
 
     private static LeaveDto MapLeaveDto(Leave l)

@@ -251,6 +251,19 @@ public class LeaveTypeDto
     public int DefaultDaysPerYear { get; set; }
 }
 
+public class LeaveBalanceDto
+{
+    public int EmployeeId { get; set; }
+    public string EmployeeName { get; set; } = string.Empty;
+    public int LeaveTypeId { get; set; }
+    public string LeaveTypeName { get; set; } = string.Empty;
+    public int Year { get; set; }
+    public int TotalAllocatedDays { get; set; }
+    public int UsedDays { get; set; }
+    public int PendingDays { get; set; }
+    public int AvailableDays => Math.Max(0, TotalAllocatedDays - UsedDays - PendingDays);
+}
+
 public class LeaveDto
 {
     public int Id { get; set; }
@@ -267,6 +280,7 @@ public class LeaveDto
     public int? ApprovedBy { get; set; }
     public string? ApproverName { get; set; }
     public DateTime? ApprovedAt { get; set; }
+    public int? AvailableDaysRemaining { get; set; }
 }
 
 // Salary DTOs

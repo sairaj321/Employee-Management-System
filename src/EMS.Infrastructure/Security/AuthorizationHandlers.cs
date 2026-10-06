@@ -68,11 +68,11 @@ public class OwnResourceAuthorizationHandler : AuthorizationHandler<OwnResourceR
         }
 
         // HR has global read access for Employee, Department, Attendance, Leave, Salary
-        if (roles.Contains("HR") && (requirement.BasePermission.StartsWith("Employee.") ||
-                                     requirement.BasePermission.StartsWith("Attendance.") ||
-                                     requirement.BasePermission.StartsWith("Leave.") ||
-                                     requirement.BasePermission.StartsWith("Salary.") ||
-                                     requirement.BasePermission.StartsWith("Department.")))
+        if ((roles.Contains("HR") || roles.Contains("HR Manager")) && (requirement.BasePermission.StartsWith("Employee.") ||
+                                                                       requirement.BasePermission.StartsWith("Attendance.") ||
+                                                                       requirement.BasePermission.StartsWith("Leave.") ||
+                                                                       requirement.BasePermission.StartsWith("Salary.") ||
+                                                                       requirement.BasePermission.StartsWith("Department.")))
         {
             context.Succeed(requirement);
             return;
@@ -84,8 +84,16 @@ public class OwnResourceAuthorizationHandler : AuthorizationHandler<OwnResourceR
         var routeData = httpContext.GetRouteData();
         int? targetEmployeeId = null;
 
-        // Try extracting {id} or {employeeId} from route or query
-        if (routeData.Values.TryGetValue("id", out var idVal) && int.TryParse(idVal?.ToString(), out var parsedId))
+        // For Leave routes, route 'id' represents the Leave ID, not Employee ID
+        if (requirement.BasePermission.StartsWith("Leave.") && routeData.Values.TryGetValue("id", out var leaveIdVal) && int.TryParse(leaveIdVal?.ToString(), out var leaveId))
+        {
+            var leave = await _unitOfWork.Leaves.GetByIdAsync(leaveId);
+            if (leave != null)
+            {
+                targetEmployeeId = leave.EmployeeId;
+            }
+        }
+        else if (routeData.Values.TryGetValue("id", out var idVal) && int.TryParse(idVal?.ToString(), out var parsedId))
         {
             targetEmployeeId = parsedId;
         }
@@ -101,8 +109,19 @@ public class OwnResourceAuthorizationHandler : AuthorizationHandler<OwnResourceR
         var callerEmployeeIdClaim = context.User.FindFirst("employeeId")?.Value;
         if (int.TryParse(callerEmployeeIdClaim, out var callerEmployeeId))
         {
-            // If targetEmployeeId is not specified in route/query (e.g. general own check-in/apply-leave), succeed if they have .Own
-            if (!targetEmployeeId.HasValue || targetEmployeeId.Value == callerEmployeeId)
+            // If targetEmployeeId is not specified in route/query (e.g. general own check-in/apply-leave or team pending approvals query), succeed if they have .Own or .Team
+            if (!targetEmployeeId.HasValue)
+            {
+                if (roles.Contains("Manager") ||
+                    permissions.Contains($"{requirement.BasePermission}.Own") ||
+                    permissions.Contains($"{requirement.BasePermission}.Team") ||
+                    permissions.Contains(requirement.BasePermission))
+                {
+                    context.Succeed(requirement);
+                    return;
+                }
+            }
+            else if (targetEmployeeId.Value == callerEmployeeId)
             {
                 if (permissions.Contains($"{requirement.BasePermission}.Own") || permissions.Contains(requirement.BasePermission))
                 {
@@ -111,11 +130,11 @@ public class OwnResourceAuthorizationHandler : AuthorizationHandler<OwnResourceR
                 }
             }
 
-            // Check if caller is Manager of the target employee (.Team scope)
+            // Check if caller is Manager of the target employee (.Team scope) and not approving own resource
             if (targetEmployeeId.HasValue && (roles.Contains("Manager") || permissions.Contains($"{requirement.BasePermission}.Team")))
             {
                 var targetEmployee = await _unitOfWork.Employees.GetByIdAsync(targetEmployeeId.Value);
-                if (targetEmployee != null && targetEmployee.ManagerId == callerEmployeeId)
+                if (targetEmployee != null && targetEmployee.ManagerId == callerEmployeeId && targetEmployee.Id != callerEmployeeId)
                 {
                     context.Succeed(requirement);
                     return;

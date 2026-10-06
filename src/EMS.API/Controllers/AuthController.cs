@@ -28,6 +28,34 @@ public abstract class BaseApiController : ControllerBase
         }
     }
 
+    protected IEnumerable<string> UserRoles =>
+        User.FindAll(ClaimTypes.Role).Concat(User.FindAll("roles")).Select(c => c.Value).Distinct();
+
+    protected IEnumerable<string> UserPermissions =>
+        User.FindAll("permissions").Select(c => c.Value).Distinct();
+
+    protected bool HasGlobalAttendanceRead =>
+        UserRoles.Contains("Admin") ||
+        UserRoles.Contains("HR") ||
+        UserRoles.Contains("HR Manager") ||
+        UserPermissions.Contains("*") ||
+        UserPermissions.Contains("Attendance.Read");
+
+    protected bool HasGlobalLeaveRead =>
+        UserRoles.Contains("Admin") ||
+        UserRoles.Contains("HR") ||
+        UserRoles.Contains("HR Manager") ||
+        UserPermissions.Contains("*") ||
+        UserPermissions.Contains("Leave.Read");
+
+    protected bool HasTeamAttendanceRead =>
+        UserRoles.Contains("Manager") ||
+        UserPermissions.Contains("Attendance.Read.Team");
+
+    protected bool HasTeamLeaveRead =>
+        UserRoles.Contains("Manager") ||
+        UserPermissions.Contains("Leave.Read.Team");
+
     protected string? ClientIpAddress =>
         HttpContext.Connection.RemoteIpAddress?.ToString();
 

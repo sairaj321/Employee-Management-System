@@ -114,6 +114,18 @@ export interface LeaveType {
   defaultDaysPerYear: number;
 }
 
+export interface LeaveBalance {
+  employeeId: number;
+  employeeName: string;
+  leaveTypeId: number;
+  leaveTypeName: string;
+  year: number;
+  totalAllocatedDays: number;
+  usedDays: number;
+  pendingDays: number;
+  availableDays: number;
+}
+
 export interface SalaryStructure {
   id: number;
   employeeId: number;
@@ -264,8 +276,12 @@ export const api = {
   leaves: {
     apply: (data: { employeeId?: number; leaveTypeId: number; startDate: string; endDate: string; reason: string }) =>
       axiosClient.post<ApiResponse<Leave>>('/leaves', data),
-    getAll: (params?: { employeeId?: number; status?: number; from?: string; to?: string; managerId?: number }) =>
+    getAll: (params?: { employeeId?: number; status?: number; from?: string; to?: string; managerId?: number; teamOnly?: boolean }) =>
       axiosClient.get<ApiResponse<Leave[]>>('/leaves', { params }),
+    getPendingApprovals: () =>
+      axiosClient.get<ApiResponse<Leave[]>>('/leaves/pending-approvals'),
+    getBalances: (params?: { employeeId?: number; year?: number }) =>
+      axiosClient.get<ApiResponse<LeaveBalance[]>>('/leaves/balances', { params }),
     approve: (id: number, comments?: string) =>
       axiosClient.put<ApiResponse<Leave>>(`/leaves/${id}/approve`, { approved: true, comments }),
     reject: (id: number, comments?: string) =>

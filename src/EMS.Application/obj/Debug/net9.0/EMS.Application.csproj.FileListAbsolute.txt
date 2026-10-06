@@ -13,3 +13,4 @@ C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Application\obj\Debug\n
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Application\obj\Debug\net9.0\refint\EMS.Application.dll
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Application\obj\Debug\net9.0\EMS.Application.pdb
 C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Application\obj\Debug\net9.0\ref\EMS.Application.dll
+C:\Users\sairajk\.gemini\antigravity\scratch\EMS\src\EMS.Application\obj\Debug\net9.0\EMS.Application.sourcelink.json
